@@ -18,7 +18,7 @@ jobs:
       - run: flutter config --enable-web
         shell: bash
 
-      - run: flutter build web --release -t lib/main.dart --web-renderer=auto --base-href /saas_website_template/ 
+      - run: flutter build web --release -t lib/main.dart --web-renderer=auto --base-href /the_hangman_game/ 
         shell: bash
 
       - run: git config user.name github-actions
