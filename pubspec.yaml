@@ -1,0 +1,45 @@
+name: app
+description: A new Flutter project.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  cloud_firestore: ^4.7.0
+  fancy_password_field: ^2.0.0
+  firebase_auth: ^4.5.0
+  firebase_core: ^2.14.0
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.4.1
+  flutter_redux: ^0.10.0
+  google_fonts: ^5.1.0
+  json_annotation: ^4.8.1
+  redux_epics: ^0.15.1 
+  redux: ^5.0.0 
+  responsive_framework: ^1.1.0
+  rxdart: ^0.27.7
+
+dev_dependencies:
+  build_runner: ^2.4.6
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  freezed: ^2.4.1
+  json_serializable: ^6.7.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/body.png
+    - assets/hangman.png
+    - assets/head.png
+    - assets/left_arm.png
+    - assets/left_foot.png
+    - assets/right_arm.png
+    - assets/right_foot.png
+    - assets/rope.png
+    - assets/union.png
+    - assets/partial_rope.png
