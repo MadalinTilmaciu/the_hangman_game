@@ -21,6 +21,7 @@ GameState _$GameStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GameState {
   AuthState get auth => throw _privateConstructorUsedError;
+  LeaderboardState get leaderboardList => throw _privateConstructorUsedError;
   Set<String> get pendingActions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -32,9 +33,10 @@ mixin _$GameState {
 abstract class $GameStateCopyWith<$Res> {
   factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) = _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
-  $Res call({AuthState auth, Set<String> pendingActions});
+  $Res call({AuthState auth, LeaderboardState leaderboardList, Set<String> pendingActions});
 
   $AuthStateCopyWith<$Res> get auth;
+  $LeaderboardStateCopyWith<$Res> get leaderboardList;
 }
 
 /// @nodoc
@@ -50,6 +52,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
   @override
   $Res call({
     Object? auth = null,
+    Object? leaderboardList = null,
     Object? pendingActions = null,
   }) {
     return _then(_value.copyWith(
@@ -57,6 +60,10 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
           ? _value.auth
           : auth // ignore: cast_nullable_to_non_nullable
               as AuthState,
+      leaderboardList: null == leaderboardList
+          ? _value.leaderboardList
+          : leaderboardList // ignore: cast_nullable_to_non_nullable
+              as LeaderboardState,
       pendingActions: null == pendingActions
           ? _value.pendingActions
           : pendingActions // ignore: cast_nullable_to_non_nullable
@@ -71,6 +78,14 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
       return _then(_value.copyWith(auth: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LeaderboardStateCopyWith<$Res> get leaderboardList {
+    return $LeaderboardStateCopyWith<$Res>(_value.leaderboardList, (value) {
+      return _then(_value.copyWith(leaderboardList: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -79,10 +94,12 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
       __$$_GameStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthState auth, Set<String> pendingActions});
+  $Res call({AuthState auth, LeaderboardState leaderboardList, Set<String> pendingActions});
 
   @override
   $AuthStateCopyWith<$Res> get auth;
+  @override
+  $LeaderboardStateCopyWith<$Res> get leaderboardList;
 }
 
 /// @nodoc
@@ -94,6 +111,7 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$_
   @override
   $Res call({
     Object? auth = null,
+    Object? leaderboardList = null,
     Object? pendingActions = null,
   }) {
     return _then(_$_GameState(
@@ -101,6 +119,10 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$_
           ? _value.auth
           : auth // ignore: cast_nullable_to_non_nullable
               as AuthState,
+      leaderboardList: null == leaderboardList
+          ? _value.leaderboardList
+          : leaderboardList // ignore: cast_nullable_to_non_nullable
+              as LeaderboardState,
       pendingActions: null == pendingActions
           ? _value._pendingActions
           : pendingActions // ignore: cast_nullable_to_non_nullable
@@ -112,7 +134,10 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$_
 /// @nodoc
 @JsonSerializable()
 class _$_GameState implements _GameState {
-  const _$_GameState({this.auth = const AuthState(), final Set<String> pendingActions = const <String>{}})
+  const _$_GameState(
+      {this.auth = const AuthState(),
+      this.leaderboardList = const LeaderboardState(),
+      final Set<String> pendingActions = const <String>{}})
       : _pendingActions = pendingActions;
 
   factory _$_GameState.fromJson(Map<String, dynamic> json) => _$$_GameStateFromJson(json);
@@ -120,6 +145,9 @@ class _$_GameState implements _GameState {
   @override
   @JsonKey()
   final AuthState auth;
+  @override
+  @JsonKey()
+  final LeaderboardState leaderboardList;
   final Set<String> _pendingActions;
   @override
   @JsonKey()
@@ -131,7 +159,7 @@ class _$_GameState implements _GameState {
 
   @override
   String toString() {
-    return 'GameState(auth: $auth, pendingActions: $pendingActions)';
+    return 'GameState(auth: $auth, leaderboardList: $leaderboardList, pendingActions: $pendingActions)';
   }
 
   @override
@@ -140,12 +168,14 @@ class _$_GameState implements _GameState {
         (other.runtimeType == runtimeType &&
             other is _$_GameState &&
             (identical(other.auth, auth) || other.auth == auth) &&
+            (identical(other.leaderboardList, leaderboardList) || other.leaderboardList == leaderboardList) &&
             const DeepCollectionEquality().equals(other._pendingActions, _pendingActions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, auth, const DeepCollectionEquality().hash(_pendingActions));
+  int get hashCode =>
+      Object.hash(runtimeType, auth, leaderboardList, const DeepCollectionEquality().hash(_pendingActions));
 
   @JsonKey(ignore: true)
   @override
@@ -161,12 +191,15 @@ class _$_GameState implements _GameState {
 }
 
 abstract class _GameState implements GameState {
-  const factory _GameState({final AuthState auth, final Set<String> pendingActions}) = _$_GameState;
+  const factory _GameState(
+      {final AuthState auth, final LeaderboardState leaderboardList, final Set<String> pendingActions}) = _$_GameState;
 
   factory _GameState.fromJson(Map<String, dynamic> json) = _$_GameState.fromJson;
 
   @override
   AuthState get auth;
+  @override
+  LeaderboardState get leaderboardList;
   @override
   Set<String> get pendingActions;
   @override
@@ -467,4 +500,296 @@ abstract class _AuthState implements AuthState {
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith => throw _privateConstructorUsedError;
+}
+
+LeaderboardUser _$LeaderboardUserFromJson(Map<String, dynamic> json) {
+  return _LeaderboardUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LeaderboardUser {
+  String get uid => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  int get score => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LeaderboardUserCopyWith<LeaderboardUser> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LeaderboardUserCopyWith<$Res> {
+  factory $LeaderboardUserCopyWith(LeaderboardUser value, $Res Function(LeaderboardUser) then) =
+      _$LeaderboardUserCopyWithImpl<$Res, LeaderboardUser>;
+  @useResult
+  $Res call({String uid, String name, int score});
+}
+
+/// @nodoc
+class _$LeaderboardUserCopyWithImpl<$Res, $Val extends LeaderboardUser> implements $LeaderboardUserCopyWith<$Res> {
+  _$LeaderboardUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uid = null,
+    Object? name = null,
+    Object? score = null,
+  }) {
+    return _then(_value.copyWith(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      score: null == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_LeaderboardUserCopyWith<$Res> implements $LeaderboardUserCopyWith<$Res> {
+  factory _$$_LeaderboardUserCopyWith(_$_LeaderboardUser value, $Res Function(_$_LeaderboardUser) then) =
+      __$$_LeaderboardUserCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String uid, String name, int score});
+}
+
+/// @nodoc
+class __$$_LeaderboardUserCopyWithImpl<$Res> extends _$LeaderboardUserCopyWithImpl<$Res, _$_LeaderboardUser>
+    implements _$$_LeaderboardUserCopyWith<$Res> {
+  __$$_LeaderboardUserCopyWithImpl(_$_LeaderboardUser _value, $Res Function(_$_LeaderboardUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uid = null,
+    Object? name = null,
+    Object? score = null,
+  }) {
+    return _then(_$_LeaderboardUser(
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      score: null == score
+          ? _value.score
+          : score // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LeaderboardUser implements _LeaderboardUser {
+  const _$_LeaderboardUser({required this.uid, required this.name, required this.score});
+
+  factory _$_LeaderboardUser.fromJson(Map<String, dynamic> json) => _$$_LeaderboardUserFromJson(json);
+
+  @override
+  final String uid;
+  @override
+  final String name;
+  @override
+  final int score;
+
+  @override
+  String toString() {
+    return 'LeaderboardUser(uid: $uid, name: $name, score: $score)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LeaderboardUser &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.score, score) || other.score == score));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, uid, name, score);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LeaderboardUserCopyWith<_$_LeaderboardUser> get copyWith =>
+      __$$_LeaderboardUserCopyWithImpl<_$_LeaderboardUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LeaderboardUserToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LeaderboardUser implements LeaderboardUser {
+  const factory _LeaderboardUser({required final String uid, required final String name, required final int score}) =
+      _$_LeaderboardUser;
+
+  factory _LeaderboardUser.fromJson(Map<String, dynamic> json) = _$_LeaderboardUser.fromJson;
+
+  @override
+  String get uid;
+  @override
+  String get name;
+  @override
+  int get score;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LeaderboardUserCopyWith<_$_LeaderboardUser> get copyWith => throw _privateConstructorUsedError;
+}
+
+LeaderboardState _$LeaderboardStateFromJson(Map<String, dynamic> json) {
+  return _LeaderboardState.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LeaderboardState {
+  List<LeaderboardUser> get leaderboardList => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LeaderboardStateCopyWith<LeaderboardState> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LeaderboardStateCopyWith<$Res> {
+  factory $LeaderboardStateCopyWith(LeaderboardState value, $Res Function(LeaderboardState) then) =
+      _$LeaderboardStateCopyWithImpl<$Res, LeaderboardState>;
+  @useResult
+  $Res call({List<LeaderboardUser> leaderboardList});
+}
+
+/// @nodoc
+class _$LeaderboardStateCopyWithImpl<$Res, $Val extends LeaderboardState> implements $LeaderboardStateCopyWith<$Res> {
+  _$LeaderboardStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? leaderboardList = null,
+  }) {
+    return _then(_value.copyWith(
+      leaderboardList: null == leaderboardList
+          ? _value.leaderboardList
+          : leaderboardList // ignore: cast_nullable_to_non_nullable
+              as List<LeaderboardUser>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_LeaderboardStateCopyWith<$Res> implements $LeaderboardStateCopyWith<$Res> {
+  factory _$$_LeaderboardStateCopyWith(_$_LeaderboardState value, $Res Function(_$_LeaderboardState) then) =
+      __$$_LeaderboardStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<LeaderboardUser> leaderboardList});
+}
+
+/// @nodoc
+class __$$_LeaderboardStateCopyWithImpl<$Res> extends _$LeaderboardStateCopyWithImpl<$Res, _$_LeaderboardState>
+    implements _$$_LeaderboardStateCopyWith<$Res> {
+  __$$_LeaderboardStateCopyWithImpl(_$_LeaderboardState _value, $Res Function(_$_LeaderboardState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? leaderboardList = null,
+  }) {
+    return _then(_$_LeaderboardState(
+      leaderboardList: null == leaderboardList
+          ? _value._leaderboardList
+          : leaderboardList // ignore: cast_nullable_to_non_nullable
+              as List<LeaderboardUser>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LeaderboardState implements _LeaderboardState {
+  const _$_LeaderboardState({final List<LeaderboardUser> leaderboardList = const <LeaderboardUser>[]})
+      : _leaderboardList = leaderboardList;
+
+  factory _$_LeaderboardState.fromJson(Map<String, dynamic> json) => _$$_LeaderboardStateFromJson(json);
+
+  final List<LeaderboardUser> _leaderboardList;
+  @override
+  @JsonKey()
+  List<LeaderboardUser> get leaderboardList {
+    if (_leaderboardList is EqualUnmodifiableListView) return _leaderboardList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_leaderboardList);
+  }
+
+  @override
+  String toString() {
+    return 'LeaderboardState(leaderboardList: $leaderboardList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LeaderboardState &&
+            const DeepCollectionEquality().equals(other._leaderboardList, _leaderboardList));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_leaderboardList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LeaderboardStateCopyWith<_$_LeaderboardState> get copyWith =>
+      __$$_LeaderboardStateCopyWithImpl<_$_LeaderboardState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LeaderboardStateToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LeaderboardState implements LeaderboardState {
+  const factory _LeaderboardState({final List<LeaderboardUser> leaderboardList}) = _$_LeaderboardState;
+
+  factory _LeaderboardState.fromJson(Map<String, dynamic> json) = _$_LeaderboardState.fromJson;
+
+  @override
+  List<LeaderboardUser> get leaderboardList;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LeaderboardStateCopyWith<_$_LeaderboardState> get copyWith => throw _privateConstructorUsedError;
 }

@@ -4,6 +4,7 @@ part of 'index.dart';
 class GameState with _$GameState {
   const factory GameState({
     @Default(AuthState()) AuthState auth,
+    @Default(LeaderboardState()) LeaderboardState leaderboardList,
     @Default(<String>{}) Set<String> pendingActions,
   }) = _GameState;
 

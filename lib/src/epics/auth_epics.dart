@@ -27,8 +27,13 @@ class AuthEpics implements EpicClass<GameState> {
       (InitializeAppStart action) {
         return Stream<void>.value(null).flatMap((_) => _api.currentUser()).startWith(null).pairwise().expand(
           (List<GameUser?> users) {
+            final bool hasLoggedIn = users.first == null && users.last != null;
+
             return <dynamic>[
               InitializeApp.successful(users.last),
+              if (hasLoggedIn) ...<dynamic>[
+                const GetLeaderboard.start(),
+              ]
             ];
           },
         ).onErrorReturnWith((Object error, StackTrace stackTrace) => InitializeApp.error(error, stackTrace));

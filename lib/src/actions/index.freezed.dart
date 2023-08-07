@@ -1966,3 +1966,540 @@ abstract class InitializeAppError implements InitializeApp {
   @JsonKey(ignore: true)
   _$$InitializeAppErrorCopyWith<_$InitializeAppError> get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$GetLeaderboard {
+  String get pendingId => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(List<LeaderboardUser> leaderboardList, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetLeaderboardStart value) start,
+    required TResult Function(GetLeaderboardSuccessful value) successful,
+    required TResult Function(GetLeaderboardError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLeaderboardStart value)? start,
+    TResult? Function(GetLeaderboardSuccessful value)? successful,
+    TResult? Function(GetLeaderboardError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLeaderboardStart value)? start,
+    TResult Function(GetLeaderboardSuccessful value)? successful,
+    TResult Function(GetLeaderboardError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetLeaderboardCopyWith<GetLeaderboard> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetLeaderboardCopyWith<$Res> {
+  factory $GetLeaderboardCopyWith(GetLeaderboard value, $Res Function(GetLeaderboard) then) =
+      _$GetLeaderboardCopyWithImpl<$Res, GetLeaderboard>;
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class _$GetLeaderboardCopyWithImpl<$Res, $Val extends GetLeaderboard> implements $GetLeaderboardCopyWith<$Res> {
+  _$GetLeaderboardCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_value.copyWith(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GetLeaderboardStartCopyWith<$Res> implements $GetLeaderboardCopyWith<$Res> {
+  factory _$$GetLeaderboardStartCopyWith(_$GetLeaderboardStart value, $Res Function(_$GetLeaderboardStart) then) =
+      __$$GetLeaderboardStartCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class __$$GetLeaderboardStartCopyWithImpl<$Res> extends _$GetLeaderboardCopyWithImpl<$Res, _$GetLeaderboardStart>
+    implements _$$GetLeaderboardStartCopyWith<$Res> {
+  __$$GetLeaderboardStartCopyWithImpl(_$GetLeaderboardStart _value, $Res Function(_$GetLeaderboardStart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetLeaderboardStart(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetLeaderboardStart implements GetLeaderboardStart {
+  const _$GetLeaderboardStart({this.pendingId = _kGetLeaderboardPendingId});
+
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetLeaderboard.start(pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetLeaderboardStart &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetLeaderboardStartCopyWith<_$GetLeaderboardStart> get copyWith =>
+      __$$GetLeaderboardStartCopyWithImpl<_$GetLeaderboardStart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(List<LeaderboardUser> leaderboardList, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return start(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return start?.call(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetLeaderboardStart value) start,
+    required TResult Function(GetLeaderboardSuccessful value) successful,
+    required TResult Function(GetLeaderboardError value) error,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLeaderboardStart value)? start,
+    TResult? Function(GetLeaderboardSuccessful value)? successful,
+    TResult? Function(GetLeaderboardError value)? error,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLeaderboardStart value)? start,
+    TResult Function(GetLeaderboardSuccessful value)? successful,
+    TResult Function(GetLeaderboardError value)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetLeaderboardStart implements GetLeaderboard, StartAction {
+  const factory GetLeaderboardStart({final String pendingId}) = _$GetLeaderboardStart;
+
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetLeaderboardStartCopyWith<_$GetLeaderboardStart> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetLeaderboardSuccessfulCopyWith<$Res> implements $GetLeaderboardCopyWith<$Res> {
+  factory _$$GetLeaderboardSuccessfulCopyWith(
+          _$GetLeaderboardSuccessful value, $Res Function(_$GetLeaderboardSuccessful) then) =
+      __$$GetLeaderboardSuccessfulCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<LeaderboardUser> leaderboardList, String pendingId});
+}
+
+/// @nodoc
+class __$$GetLeaderboardSuccessfulCopyWithImpl<$Res>
+    extends _$GetLeaderboardCopyWithImpl<$Res, _$GetLeaderboardSuccessful>
+    implements _$$GetLeaderboardSuccessfulCopyWith<$Res> {
+  __$$GetLeaderboardSuccessfulCopyWithImpl(
+      _$GetLeaderboardSuccessful _value, $Res Function(_$GetLeaderboardSuccessful) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? leaderboardList = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetLeaderboardSuccessful(
+      null == leaderboardList
+          ? _value._leaderboardList
+          : leaderboardList // ignore: cast_nullable_to_non_nullable
+              as List<LeaderboardUser>,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetLeaderboardSuccessful implements GetLeaderboardSuccessful {
+  const _$GetLeaderboardSuccessful(final List<LeaderboardUser> leaderboardList,
+      {this.pendingId = _kGetLeaderboardPendingId})
+      : _leaderboardList = leaderboardList;
+
+  final List<LeaderboardUser> _leaderboardList;
+  @override
+  List<LeaderboardUser> get leaderboardList {
+    if (_leaderboardList is EqualUnmodifiableListView) return _leaderboardList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_leaderboardList);
+  }
+
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetLeaderboard.successful(leaderboardList: $leaderboardList, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetLeaderboardSuccessful &&
+            const DeepCollectionEquality().equals(other._leaderboardList, _leaderboardList) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_leaderboardList), pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetLeaderboardSuccessfulCopyWith<_$GetLeaderboardSuccessful> get copyWith =>
+      __$$GetLeaderboardSuccessfulCopyWithImpl<_$GetLeaderboardSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(List<LeaderboardUser> leaderboardList, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return successful(leaderboardList, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return successful?.call(leaderboardList, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(leaderboardList, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetLeaderboardStart value) start,
+    required TResult Function(GetLeaderboardSuccessful value) successful,
+    required TResult Function(GetLeaderboardError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLeaderboardStart value)? start,
+    TResult? Function(GetLeaderboardSuccessful value)? successful,
+    TResult? Function(GetLeaderboardError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLeaderboardStart value)? start,
+    TResult Function(GetLeaderboardSuccessful value)? successful,
+    TResult Function(GetLeaderboardError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetLeaderboardSuccessful implements GetLeaderboard, StopAction {
+  const factory GetLeaderboardSuccessful(final List<LeaderboardUser> leaderboardList, {final String pendingId}) =
+      _$GetLeaderboardSuccessful;
+
+  List<LeaderboardUser> get leaderboardList;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetLeaderboardSuccessfulCopyWith<_$GetLeaderboardSuccessful> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetLeaderboardErrorCopyWith<$Res> implements $GetLeaderboardCopyWith<$Res> {
+  factory _$$GetLeaderboardErrorCopyWith(_$GetLeaderboardError value, $Res Function(_$GetLeaderboardError) then) =
+      __$$GetLeaderboardErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Object error, StackTrace stackTrace, String pendingId});
+}
+
+/// @nodoc
+class __$$GetLeaderboardErrorCopyWithImpl<$Res> extends _$GetLeaderboardCopyWithImpl<$Res, _$GetLeaderboardError>
+    implements _$$GetLeaderboardErrorCopyWith<$Res> {
+  __$$GetLeaderboardErrorCopyWithImpl(_$GetLeaderboardError _value, $Res Function(_$GetLeaderboardError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetLeaderboardError(
+      null == error ? _value.error : error,
+      null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetLeaderboardError implements GetLeaderboardError {
+  const _$GetLeaderboardError(this.error, this.stackTrace, {this.pendingId = _kGetLeaderboardPendingId});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetLeaderboard.error(error: $error, stackTrace: $stackTrace, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetLeaderboardError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error), stackTrace, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetLeaderboardErrorCopyWith<_$GetLeaderboardError> get copyWith =>
+      __$$GetLeaderboardErrorCopyWithImpl<_$GetLeaderboardError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(List<LeaderboardUser> leaderboardList, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return error(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return error?.call(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(List<LeaderboardUser> leaderboardList, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetLeaderboardStart value) start,
+    required TResult Function(GetLeaderboardSuccessful value) successful,
+    required TResult Function(GetLeaderboardError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLeaderboardStart value)? start,
+    TResult? Function(GetLeaderboardSuccessful value)? successful,
+    TResult? Function(GetLeaderboardError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLeaderboardStart value)? start,
+    TResult Function(GetLeaderboardSuccessful value)? successful,
+    TResult Function(GetLeaderboardError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetLeaderboardError implements GetLeaderboard, StopAction {
+  const factory GetLeaderboardError(final Object error, final StackTrace stackTrace, {final String pendingId}) =
+      _$GetLeaderboardError;
+
+  Object get error;
+  StackTrace get stackTrace;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetLeaderboardErrorCopyWith<_$GetLeaderboardError> get copyWith => throw _privateConstructorUsedError;
+}

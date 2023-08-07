@@ -6,11 +6,12 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../actions/index.dart';
 import '../models/index.dart';
 import 'home_page.dart';
+import 'leaderboard.dart';
 
-class StartGamePage extends StatelessWidget {
-  const StartGamePage({super.key});
+class GamePage extends StatelessWidget {
+  const GamePage({super.key});
 
-  static const String name = 'start_game';
+  static const String name = 'game_page';
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +126,17 @@ class StartGamePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          StoreProvider.of<GameState>(context).dispatch(
+                            const GetLeaderboard.start(),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                              builder: (BuildContext context) => const Leaderboard(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12),

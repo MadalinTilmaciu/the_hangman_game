@@ -9,6 +9,8 @@ part 'auth/login_user.dart';
 part 'auth/logout_user.dart';
 part 'auth/initialize_app.dart';
 
+part 'leaderboard/get_leaderboard.dart';
+
 abstract class PendingActions {
   String get pendingId;
 }

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -10,13 +12,16 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'firebase_options.dart';
 import 'src/actions/index.dart';
 import 'src/data/auth_api.dart';
+import 'src/data/leaderboard_api.dart';
 import 'src/epics/auth_epics.dart';
 import 'src/epics/game_epics.dart';
+import 'src/epics/leaderboard_epics.dart';
 import 'src/models/index.dart';
 import 'src/presentations/containers/index.dart';
+import 'src/presentations/game_page.dart';
 import 'src/presentations/home_page.dart';
-import 'src/presentations/start_game_page.dart';
 import 'src/reducer/reducer.dart';
+import 'src/widgets/no_transition_builder.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +31,13 @@ Future<void> main() async {
   final AuthApi authApi = AuthApi(FirebaseAuth.instance);
   final AuthEpics auth = AuthEpics(authApi);
 
-  final GameEpics epic = GameEpics(auth);
+  final LeaderboardApi leaderboardApi = LeaderboardApi(FirebaseFirestore.instance);
+  final LeaderboardEpics leaderboard = LeaderboardEpics(leaderboardApi);
+
+  final GameEpics epic = GameEpics(
+    auth,
+    leaderboard,
+  );
 
   final Store<GameState> store = Store<GameState>(
     reducer,
@@ -61,6 +72,18 @@ class TheHangman extends StatelessWidget {
     return StoreProvider<GameState>(
       store: store,
       child: MaterialApp(
+        theme: ThemeData(
+          pageTransitionsTheme: PageTransitionsTheme(
+            builders: kIsWeb
+                ? <TargetPlatform, PageTransitionsBuilder>{
+                    for (final TargetPlatform platform in TargetPlatform.values) platform: const NoTransitionsBuilder(),
+                  }
+                : const <TargetPlatform, PageTransitionsBuilder>{
+                    TargetPlatform.android: ZoomPageTransitionsBuilder(),
+                    TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+                  },
+          ),
+        ),
         builder: (BuildContext context, Widget? child) => ResponsiveBreakpoints.builder(
           child: child!,
           breakpoints: <Breakpoint>[
@@ -108,12 +131,12 @@ class TheHangman extends StatelessWidget {
             if (user == null) {
               return const HomePage();
             } else {
-              return const StartGamePage();
+              return const GamePage();
             }
           },
         );
-      case StartGamePage.name:
-        return const StartGamePage();
+      case GamePage.name:
+        return const GamePage();
       default:
         return const SizedBox.shrink();
     }

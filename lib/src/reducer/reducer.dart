@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 import '../actions/index.dart';
 import '../models/index.dart';
 import 'auth_reducer.dart';
+import 'leaderboard_reducer.dart';
 
 Reducer<GameState> reducer = combineReducers(
   <Reducer<GameState>>[
@@ -23,8 +24,7 @@ GameState _reducer(GameState state, dynamic action) {
   }
 
   return state.copyWith(
-    auth: authReducer(state.auth, action),
-  );
+      auth: authReducer(state.auth, action), leaderboardList: leaderboardReducer(state.leaderboardList, action));
 }
 
 GameState _startAction(GameState state, StartAction action) {

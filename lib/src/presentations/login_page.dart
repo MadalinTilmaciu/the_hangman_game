@@ -7,7 +7,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../actions/index.dart';
 import '../models/index.dart';
 import '../widgets/text_input.dart';
-import 'start_game_page.dart';
+import 'game_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -142,7 +142,7 @@ class LoginPage extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute<dynamic>(
-                                builder: (BuildContext context) => const StartGamePage(),
+                                builder: (BuildContext context) => const GamePage(),
                               ),
                             );
                           }

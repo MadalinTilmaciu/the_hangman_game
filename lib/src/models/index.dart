@@ -7,3 +7,6 @@ part 'game_state.dart';
 
 part 'auth/game_user.dart';
 part 'auth/auth_state.dart';
+
+part 'leaderboard.dart/leaderboard_user.dart';
+part 'leaderboard.dart/leaderboard_state.dart';
