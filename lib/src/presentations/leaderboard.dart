@@ -19,13 +19,17 @@ class Leaderboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 6),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 7),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: ResponsiveBreakpoints.of(context).largerThan(MOBILE)
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.center,
                     children: <Widget>[
                       Stack(
                         children: <Widget>[
@@ -33,11 +37,11 @@ class Leaderboard extends StatelessWidget {
                             'Leaderboard',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
-                                    ? 128
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
-                                        ? 80
-                                        : 72,
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -52,11 +56,11 @@ class Leaderboard extends StatelessWidget {
                             'Leaderboard',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
-                                    ? 128
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
-                                        ? 80
-                                        : 72,
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -79,12 +83,12 @@ class Leaderboard extends StatelessWidget {
                                     width: 10,
                                   ),
                                 ),
-                                height: mediaQ.height / 3,
+                                height: mediaQ.height / 3.5,
                                 width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 2
                                     : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 2
-                                        : mediaQ.width / 1.3,
+                                        ? mediaQ.width / 1.75
+                                        : mediaQ.width / 1.15,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8),
                                   child: ListView.builder(
@@ -101,40 +105,47 @@ class Leaderboard extends StatelessWidget {
                                                 fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                                                     ? 40
                                                     : ResponsiveBreakpoints.of(context).isTablet
-                                                        ? 32
-                                                        : 24,
+                                                        ? 30
+                                                        : 18,
                                                 height: 1,
                                                 letterSpacing: 6,
                                                 fontWeight: FontWeight.bold,
                                                 color: leaderboard[index].uid == user!.uid
-                                                    ? Colors.amber
+                                                    ? const Color(0xFFE91E63)
                                                     : const Color(0xFF9D27B0),
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: mediaQ.width / 5,
-                                            child: Text(
-                                              leaderboard[index].name,
-                                              style: GoogleFonts.roboto(
-                                                textStyle: TextStyle(
-                                                  fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
-                                                      ? 40
-                                                      : ResponsiveBreakpoints.of(context).isTablet
-                                                          ? 32
-                                                          : 24,
-                                                  height: 1,
-                                                  letterSpacing: 6,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: leaderboard[index].uid == user.uid
-                                                      ? Colors.amber
-                                                      : const Color(0xFF9D27B0),
+                                          Transform.translate(
+                                            offset: const Offset(-32, 0),
+                                            child: SizedBox(
+                                              width: ResponsiveBreakpoints.of(context).isMobile
+                                                  ? mediaQ.width / 4
+                                                  : mediaQ.width / 5,
+                                              child: Text(
+                                                leaderboard[index].name,
+                                                style: GoogleFonts.roboto(
+                                                  textStyle: TextStyle(
+                                                    fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                                                        ? 40
+                                                        : ResponsiveBreakpoints.of(context).isTablet
+                                                            ? 30
+                                                            : 18,
+                                                    height: 1,
+                                                    letterSpacing: 6,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: leaderboard[index].uid == user.uid
+                                                        ? const Color(0xFFE91E63)
+                                                        : const Color(0xFF9D27B0),
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                           SizedBox(
-                                            width: mediaQ.width / 7,
+                                            width: ResponsiveBreakpoints.of(context).isMobile
+                                                ? mediaQ.width / 5
+                                                : mediaQ.width / 7,
                                             child: Text(
                                               leaderboard[index].score.toString(),
                                               style: GoogleFonts.roboto(
@@ -142,13 +153,13 @@ class Leaderboard extends StatelessWidget {
                                                   fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                                                       ? 40
                                                       : ResponsiveBreakpoints.of(context).isTablet
-                                                          ? 32
-                                                          : 24,
+                                                          ? 30
+                                                          : 18,
                                                   height: 1,
                                                   letterSpacing: 6,
                                                   fontWeight: FontWeight.bold,
                                                   color: leaderboard[index].uid == user.uid
-                                                      ? Colors.amber
+                                                      ? const Color(0xFFE91E63)
                                                       : const Color(0xFF9D27B0),
                                                 ),
                                               ),
@@ -175,13 +186,13 @@ class Leaderboard extends StatelessWidget {
                 children: <Widget>[
                   Image.asset(
                     'assets/partial_rope.png',
-                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.3 : 1.15,
+                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                   ),
                   Transform.translate(
                     offset: const Offset(0, -32),
                     child: Image.asset(
                       'assets/hangman.png',
-                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.3 : 1.15,
+                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                     ),
                   ),
                 ],

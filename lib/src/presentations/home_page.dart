@@ -12,6 +12,31 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
+    ButtonStyle getButtonStyle(Color color) {
+      return ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        backgroundColor: color,
+        elevation: 0,
+        side: const BorderSide(width: 6),
+        fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+            ? Size(
+                mediaQ.width / 3,
+                ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+              )
+            : ResponsiveBreakpoints.of(context).isTablet
+                ? Size(
+                    mediaQ.width / 2,
+                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+                  )
+                : Size(
+                    mediaQ.width / 1.3,
+                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 10,
+                  ),
+      );
+    }
+
     return SafeArea(
       child: Scaffold(
         body: Row(
@@ -22,7 +47,9 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: mediaQ.height / 6),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,7 +60,9 @@ class HomePage extends StatelessWidget {
                             'The',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -48,7 +77,9 @@ class HomePage extends StatelessWidget {
                             'The',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -64,7 +95,9 @@ class HomePage extends StatelessWidget {
                             'Hangman',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 foreground: Paint()
@@ -78,7 +111,9 @@ class HomePage extends StatelessWidget {
                             'Hangman',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 color: const Color(0xFFE91E63),
@@ -100,19 +135,7 @@ class HomePage extends StatelessWidget {
                             ),
                           );
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          backgroundColor: const Color(0xFF9D27B0),
-                          elevation: 0,
-                          side: const BorderSide(width: 6),
-                          fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                              ? Size(mediaQ.width / 4, 100)
-                              : ResponsiveBreakpoints.of(context).isTablet
-                                  ? Size(mediaQ.width / 2, 100)
-                                  : Size(mediaQ.width / 1.3, 100),
-                        ),
+                        style: getButtonStyle(const Color(0xFF9D27B0)),
                         child: Text(
                           'Create Account',
                           style: GoogleFonts.roboto(
@@ -121,6 +144,7 @@ class HomePage extends StatelessWidget {
                               letterSpacing: 6,
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFFFFE0B2),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
@@ -131,23 +155,11 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const LoginPage(),
+                              builder: (BuildContext context) => LoginPage(),
                             ),
                           );
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          backgroundColor: Colors.white,
-                          elevation: 0,
-                          side: const BorderSide(width: 6),
-                          fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                              ? Size(mediaQ.width / 4, 100)
-                              : ResponsiveBreakpoints.of(context).isTablet
-                                  ? Size(mediaQ.width / 2, 100)
-                                  : Size(mediaQ.width / 1.3, 100),
-                        ),
+                        style: getButtonStyle(Colors.white),
                         child: Text(
                           'Login',
                           style: GoogleFonts.roboto(
@@ -156,6 +168,7 @@ class HomePage extends StatelessWidget {
                               letterSpacing: 6,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
@@ -170,13 +183,13 @@ class HomePage extends StatelessWidget {
                 children: <Widget>[
                   Image.asset(
                     'assets/partial_rope.png',
-                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.15 : 1,
+                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                   ),
                   Transform.translate(
                     offset: const Offset(0, -32),
                     child: Image.asset(
                       'assets/hangman.png',
-                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.15 : 1,
+                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                     ),
                   ),
                 ],

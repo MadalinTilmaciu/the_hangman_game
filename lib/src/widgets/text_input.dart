@@ -21,17 +21,29 @@ class CustomTextInput extends StatelessWidget {
       controller: controller,
       obscureText: isObscure,
       style: TextStyle(
-        fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+        fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+            ? 36
+            : ResponsiveBreakpoints.of(context).isTablet
+                ? 24
+                : 18,
         letterSpacing: 6,
         fontWeight: FontWeight.bold,
         color: Colors.black,
       ),
-      cursorHeight: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+      cursorHeight: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+          ? 36
+          : ResponsiveBreakpoints.of(context).isTablet
+              ? 24
+              : 18,
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: GoogleFonts.roboto(
           textStyle: TextStyle(
-            fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+            fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                ? 36
+                : ResponsiveBreakpoints.of(context).isTablet
+                    ? 24
+                    : 18,
             letterSpacing: 6,
             fontWeight: FontWeight.bold,
             color: Colors.grey[400],

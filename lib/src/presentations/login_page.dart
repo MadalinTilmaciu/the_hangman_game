@@ -10,14 +10,37 @@ import '../widgets/text_input.dart';
 import 'game_page.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
-    final TextEditingController email = TextEditingController();
-    final TextEditingController password = TextEditingController();
+    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      backgroundColor: const Color(0xFF9D27B0),
+      elevation: 0,
+      side: const BorderSide(width: 6),
+      fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+          ? Size(
+              mediaQ.width / 3,
+              ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+            )
+          : ResponsiveBreakpoints.of(context).isTablet
+              ? Size(
+                  mediaQ.width / 2,
+                  ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+                )
+              : Size(
+                  mediaQ.width / 1.3,
+                  ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 10,
+                ),
+    );
 
     return SafeArea(
       child: Scaffold(
@@ -29,7 +52,9 @@ class LoginPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: mediaQ.height / 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                    ? CrossAxisAlignment.start
+                    : CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +65,9 @@ class LoginPage extends StatelessWidget {
                             'The',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 10
+                                    : mediaQ.width / 7,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -55,7 +82,9 @@ class LoginPage extends StatelessWidget {
                             'The',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 10
+                                    : mediaQ.width / 7,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -71,7 +100,9 @@ class LoginPage extends StatelessWidget {
                             'Hangman',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 foreground: Paint()
@@ -85,7 +116,9 @@ class LoginPage extends StatelessWidget {
                             'Hangman',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 128 : 72,
+                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.width / 12
+                                    : mediaQ.width / 7,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 color: const Color(0xFFE91E63),
@@ -101,31 +134,36 @@ class LoginPage extends StatelessWidget {
                       const SizedBox(height: 24),
                       SizedBox(
                         width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 4
+                            ? mediaQ.width / 3
                             : ResponsiveBreakpoints.of(context).isTablet
                                 ? mediaQ.width / 2
                                 : mediaQ.width / 1.3,
-                        height: 100,
+                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                            ? mediaQ.height / 12
+                            : mediaQ.height / 16,
                         child: CustomTextInput(
                           hintText: 'Email',
                           isObscure: false,
                           controller: email,
                         ),
                       ),
+                      const SizedBox(height: 12),
                       SizedBox(
                         width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 4
+                            ? mediaQ.width / 3
                             : ResponsiveBreakpoints.of(context).isTablet
                                 ? mediaQ.width / 2
                                 : mediaQ.width / 1.3,
-                        height: 100,
+                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                            ? mediaQ.height / 12
+                            : mediaQ.height / 16,
                         child: CustomTextInput(
                           hintText: 'Password',
                           isObscure: true,
                           controller: password,
                         ),
                       ),
-                      const SizedBox(height: 48),
+                      const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
                           final Store<GameState> user = StoreProvider.of<GameState>(context)
@@ -147,19 +185,7 @@ class LoginPage extends StatelessWidget {
                             );
                           }
                         },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          backgroundColor: const Color(0xFF9D27B0),
-                          elevation: 0,
-                          side: const BorderSide(width: 6),
-                          fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                              ? Size(mediaQ.width / 4, 100)
-                              : ResponsiveBreakpoints.of(context).isTablet
-                                  ? Size(mediaQ.width / 2, 100)
-                                  : Size(mediaQ.width / 1.3, 100),
-                        ),
+                        style: buttonStyle,
                         child: Text(
                           'Login',
                           style: GoogleFonts.roboto(
@@ -168,6 +194,7 @@ class LoginPage extends StatelessWidget {
                               letterSpacing: 6,
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFFFFE0B2),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
@@ -182,13 +209,13 @@ class LoginPage extends StatelessWidget {
                 children: <Widget>[
                   Image.asset(
                     'assets/partial_rope.png',
-                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.15 : 1,
+                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                   ),
                   Transform.translate(
                     offset: const Offset(0, -32),
                     child: Image.asset(
                       'assets/hangman.png',
-                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.15 : 1,
+                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
                     ),
                   ),
                 ],
