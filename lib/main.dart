@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:http/http.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -13,9 +14,11 @@ import 'firebase_options.dart';
 import 'src/actions/index.dart';
 import 'src/data/auth_api.dart';
 import 'src/data/leaderboard_api.dart';
+import 'src/data/words_api.dart';
 import 'src/epics/auth_epics.dart';
 import 'src/epics/game_epics.dart';
 import 'src/epics/leaderboard_epics.dart';
+import 'src/epics/words_epics.dart';
 import 'src/models/index.dart';
 import 'src/presentations/containers/index.dart';
 import 'src/presentations/home_page.dart';
@@ -34,9 +37,14 @@ Future<void> main() async {
   final LeaderboardApi leaderboardApi = LeaderboardApi(FirebaseFirestore.instance);
   final LeaderboardEpics leaderboard = LeaderboardEpics(leaderboardApi);
 
+  final Client client = Client();
+  final WordsApi wordsApi = WordsApi(client);
+  final WordsEpics wordsEpics = WordsEpics(wordsApi);
+
   final GameEpics epic = GameEpics(
     auth,
     leaderboard,
+    wordsEpics,
   );
 
   final Store<GameState> store = Store<GameState>(

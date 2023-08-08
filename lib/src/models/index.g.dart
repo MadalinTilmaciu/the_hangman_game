@@ -11,6 +11,7 @@ _$_GameState _$$_GameStateFromJson(Map<String, dynamic> json) => _$_GameState(
       leaderboardList: json['leaderboardList'] == null
           ? const LeaderboardState()
           : LeaderboardState.fromJson(json['leaderboardList'] as Map<String, dynamic>),
+      word: json['word'] == null ? const WordState() : WordState.fromJson(json['word'] as Map<String, dynamic>),
       pendingActions:
           (json['pendingActions'] as List<dynamic>?)?.map((dynamic e) => e as String).toSet() ?? const <String>{},
     );
@@ -18,6 +19,7 @@ _$_GameState _$$_GameStateFromJson(Map<String, dynamic> json) => _$_GameState(
 Map<String, dynamic> _$$_GameStateToJson(_$_GameState instance) => <String, dynamic>{
       'auth': instance.auth,
       'leaderboardList': instance.leaderboardList,
+      'word': instance.word,
       'pendingActions': instance.pendingActions.toList(),
     };
 
@@ -62,4 +64,24 @@ _$_LeaderboardState _$$_LeaderboardStateFromJson(Map<String, dynamic> json) => _
 
 Map<String, dynamic> _$$_LeaderboardStateToJson(_$_LeaderboardState instance) => <String, dynamic>{
       'leaderboardList': instance.leaderboardList,
+    };
+
+_$_Word _$$_WordFromJson(Map<String, dynamic> json) => _$_Word(
+      word: json['word'] as String,
+      definition: json['definition'] as String,
+      pronunciation: json['pronunciation'] as String,
+    );
+
+Map<String, dynamic> _$$_WordToJson(_$_Word instance) => <String, dynamic>{
+      'word': instance.word,
+      'definition': instance.definition,
+      'pronunciation': instance.pronunciation,
+    };
+
+_$_WordState _$$_WordStateFromJson(Map<String, dynamic> json) => _$_WordState(
+      word: json['word'] == null ? null : Word.fromJson(json['word'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_WordStateToJson(_$_WordState instance) => <String, dynamic>{
+      'word': instance.word,
     };

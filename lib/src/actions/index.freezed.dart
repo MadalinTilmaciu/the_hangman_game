@@ -2503,3 +2503,540 @@ abstract class GetLeaderboardError implements GetLeaderboard, StopAction {
   @JsonKey(ignore: true)
   _$$GetLeaderboardErrorCopyWith<_$GetLeaderboardError> get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$GetRandomWord {
+  String get pendingId => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(Word word, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(Word word, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(Word word, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRandomWordStart value) start,
+    required TResult Function(GetRandomWordSuccessful value) successful,
+    required TResult Function(GetRandomWordError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRandomWordStart value)? start,
+    TResult? Function(GetRandomWordSuccessful value)? successful,
+    TResult? Function(GetRandomWordError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRandomWordStart value)? start,
+    TResult Function(GetRandomWordSuccessful value)? successful,
+    TResult Function(GetRandomWordError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetRandomWordCopyWith<GetRandomWord> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetRandomWordCopyWith<$Res> {
+  factory $GetRandomWordCopyWith(GetRandomWord value, $Res Function(GetRandomWord) then) =
+      _$GetRandomWordCopyWithImpl<$Res, GetRandomWord>;
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class _$GetRandomWordCopyWithImpl<$Res, $Val extends GetRandomWord> implements $GetRandomWordCopyWith<$Res> {
+  _$GetRandomWordCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_value.copyWith(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GetRandomWordStartCopyWith<$Res> implements $GetRandomWordCopyWith<$Res> {
+  factory _$$GetRandomWordStartCopyWith(_$GetRandomWordStart value, $Res Function(_$GetRandomWordStart) then) =
+      __$$GetRandomWordStartCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class __$$GetRandomWordStartCopyWithImpl<$Res> extends _$GetRandomWordCopyWithImpl<$Res, _$GetRandomWordStart>
+    implements _$$GetRandomWordStartCopyWith<$Res> {
+  __$$GetRandomWordStartCopyWithImpl(_$GetRandomWordStart _value, $Res Function(_$GetRandomWordStart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetRandomWordStart(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetRandomWordStart implements GetRandomWordStart {
+  const _$GetRandomWordStart({this.pendingId = _kGetRandomWordPendingId});
+
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetRandomWord.start(pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetRandomWordStart &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetRandomWordStartCopyWith<_$GetRandomWordStart> get copyWith =>
+      __$$GetRandomWordStartCopyWithImpl<_$GetRandomWordStart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(Word word, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return start(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(Word word, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return start?.call(pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(Word word, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRandomWordStart value) start,
+    required TResult Function(GetRandomWordSuccessful value) successful,
+    required TResult Function(GetRandomWordError value) error,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRandomWordStart value)? start,
+    TResult? Function(GetRandomWordSuccessful value)? successful,
+    TResult? Function(GetRandomWordError value)? error,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRandomWordStart value)? start,
+    TResult Function(GetRandomWordSuccessful value)? successful,
+    TResult Function(GetRandomWordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetRandomWordStart implements GetRandomWord, StartAction {
+  const factory GetRandomWordStart({final String pendingId}) = _$GetRandomWordStart;
+
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetRandomWordStartCopyWith<_$GetRandomWordStart> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetRandomWordSuccessfulCopyWith<$Res> implements $GetRandomWordCopyWith<$Res> {
+  factory _$$GetRandomWordSuccessfulCopyWith(
+          _$GetRandomWordSuccessful value, $Res Function(_$GetRandomWordSuccessful) then) =
+      __$$GetRandomWordSuccessfulCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Word word, String pendingId});
+
+  $WordCopyWith<$Res> get word;
+}
+
+/// @nodoc
+class __$$GetRandomWordSuccessfulCopyWithImpl<$Res> extends _$GetRandomWordCopyWithImpl<$Res, _$GetRandomWordSuccessful>
+    implements _$$GetRandomWordSuccessfulCopyWith<$Res> {
+  __$$GetRandomWordSuccessfulCopyWithImpl(
+      _$GetRandomWordSuccessful _value, $Res Function(_$GetRandomWordSuccessful) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetRandomWordSuccessful(
+      null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as Word,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WordCopyWith<$Res> get word {
+    return $WordCopyWith<$Res>(_value.word, (value) {
+      return _then(_value.copyWith(word: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$GetRandomWordSuccessful implements GetRandomWordSuccessful {
+  const _$GetRandomWordSuccessful(this.word, {this.pendingId = _kGetRandomWordPendingId});
+
+  @override
+  final Word word;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetRandomWord.successful(word: $word, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetRandomWordSuccessful &&
+            (identical(other.word, word) || other.word == word) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, word, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetRandomWordSuccessfulCopyWith<_$GetRandomWordSuccessful> get copyWith =>
+      __$$GetRandomWordSuccessfulCopyWithImpl<_$GetRandomWordSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(Word word, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return successful(word, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(Word word, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return successful?.call(word, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(Word word, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(word, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRandomWordStart value) start,
+    required TResult Function(GetRandomWordSuccessful value) successful,
+    required TResult Function(GetRandomWordError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRandomWordStart value)? start,
+    TResult? Function(GetRandomWordSuccessful value)? successful,
+    TResult? Function(GetRandomWordError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRandomWordStart value)? start,
+    TResult Function(GetRandomWordSuccessful value)? successful,
+    TResult Function(GetRandomWordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetRandomWordSuccessful implements GetRandomWord, StopAction {
+  const factory GetRandomWordSuccessful(final Word word, {final String pendingId}) = _$GetRandomWordSuccessful;
+
+  Word get word;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetRandomWordSuccessfulCopyWith<_$GetRandomWordSuccessful> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetRandomWordErrorCopyWith<$Res> implements $GetRandomWordCopyWith<$Res> {
+  factory _$$GetRandomWordErrorCopyWith(_$GetRandomWordError value, $Res Function(_$GetRandomWordError) then) =
+      __$$GetRandomWordErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Object error, StackTrace stackTrace, String pendingId});
+}
+
+/// @nodoc
+class __$$GetRandomWordErrorCopyWithImpl<$Res> extends _$GetRandomWordCopyWithImpl<$Res, _$GetRandomWordError>
+    implements _$$GetRandomWordErrorCopyWith<$Res> {
+  __$$GetRandomWordErrorCopyWithImpl(_$GetRandomWordError _value, $Res Function(_$GetRandomWordError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetRandomWordError(
+      null == error ? _value.error : error,
+      null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetRandomWordError implements GetRandomWordError {
+  const _$GetRandomWordError(this.error, this.stackTrace, {this.pendingId = _kGetRandomWordPendingId});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetRandomWord.error(error: $error, stackTrace: $stackTrace, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetRandomWordError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error), stackTrace, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetRandomWordErrorCopyWith<_$GetRandomWordError> get copyWith =>
+      __$$GetRandomWordErrorCopyWithImpl<_$GetRandomWordError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String pendingId) start,
+    required TResult Function(Word word, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return error(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String pendingId)? start,
+    TResult? Function(Word word, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return error?.call(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String pendingId)? start,
+    TResult Function(Word word, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRandomWordStart value) start,
+    required TResult Function(GetRandomWordSuccessful value) successful,
+    required TResult Function(GetRandomWordError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRandomWordStart value)? start,
+    TResult? Function(GetRandomWordSuccessful value)? successful,
+    TResult? Function(GetRandomWordError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRandomWordStart value)? start,
+    TResult Function(GetRandomWordSuccessful value)? successful,
+    TResult Function(GetRandomWordError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetRandomWordError implements GetRandomWord, StopAction {
+  const factory GetRandomWordError(final Object error, final StackTrace stackTrace, {final String pendingId}) =
+      _$GetRandomWordError;
+
+  Object get error;
+  StackTrace get stackTrace;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetRandomWordErrorCopyWith<_$GetRandomWordError> get copyWith => throw _privateConstructorUsedError;
+}

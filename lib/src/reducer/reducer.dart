@@ -5,6 +5,7 @@ import '../actions/index.dart';
 import '../models/index.dart';
 import 'auth_reducer.dart';
 import 'leaderboard_reducer.dart';
+import 'words_reducer.dart';
 
 Reducer<GameState> reducer = combineReducers(
   <Reducer<GameState>>[
@@ -24,7 +25,10 @@ GameState _reducer(GameState state, dynamic action) {
   }
 
   return state.copyWith(
-      auth: authReducer(state.auth, action), leaderboardList: leaderboardReducer(state.leaderboardList, action));
+    auth: authReducer(state.auth, action),
+    leaderboardList: leaderboardReducer(state.leaderboardList, action),
+    word: wordsReducer(state.word, action),
+  );
 }
 
 GameState _startAction(GameState state, StartAction action) {

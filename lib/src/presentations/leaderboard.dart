@@ -106,7 +106,7 @@ class Leaderboard extends StatelessWidget {
                                                     ? 40
                                                     : ResponsiveBreakpoints.of(context).isTablet
                                                         ? 30
-                                                        : 18,
+                                                        : 16,
                                                 height: 1,
                                                 letterSpacing: 6,
                                                 fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class Leaderboard extends StatelessWidget {
                                                         ? 40
                                                         : ResponsiveBreakpoints.of(context).isTablet
                                                             ? 30
-                                                            : 18,
+                                                            : 16,
                                                     height: 1,
                                                     letterSpacing: 6,
                                                     fontWeight: FontWeight.bold,
@@ -154,7 +154,7 @@ class Leaderboard extends StatelessWidget {
                                                       ? 40
                                                       : ResponsiveBreakpoints.of(context).isTablet
                                                           ? 30
-                                                          : 18,
+                                                          : 16,
                                                   height: 1,
                                                   letterSpacing: 6,
                                                   fontWeight: FontWeight.bold,

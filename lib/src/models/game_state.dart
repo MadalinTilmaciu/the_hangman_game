@@ -5,6 +5,7 @@ class GameState with _$GameState {
   const factory GameState({
     @Default(AuthState()) AuthState auth,
     @Default(LeaderboardState()) LeaderboardState leaderboardList,
+    @Default(WordState()) WordState word,
     @Default(<String>{}) Set<String> pendingActions,
   }) = _GameState;
 

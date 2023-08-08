@@ -36,7 +36,7 @@ class UnderConstructionPage extends StatelessWidget {
                                     ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
                                         ? mediaQ.width / 11
-                                        : mediaQ.width / 8,
+                                        : mediaQ.width / 8.5,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -55,7 +55,7 @@ class UnderConstructionPage extends StatelessWidget {
                                     ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
                                         ? mediaQ.width / 11
-                                        : mediaQ.width / 8,
+                                        : mediaQ.width / 8.5,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class UnderConstructionPage extends StatelessWidget {
                                     ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
                                         ? mediaQ.width / 11
-                                        : mediaQ.width / 8,
+                                        : mediaQ.width / 8.5,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class UnderConstructionPage extends StatelessWidget {
                                     ? mediaQ.width / 12
                                     : ResponsiveBreakpoints.of(context).isTablet
                                         ? mediaQ.width / 11
-                                        : mediaQ.width / 8,
+                                        : mediaQ.width / 8.5,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,

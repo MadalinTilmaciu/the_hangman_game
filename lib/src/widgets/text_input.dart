@@ -45,6 +45,7 @@ class CustomTextInput extends StatelessWidget {
                     ? 24
                     : 18,
             letterSpacing: 6,
+            height: 1,
             fontWeight: FontWeight.bold,
             color: Colors.grey[400],
           ),

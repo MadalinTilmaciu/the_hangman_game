@@ -11,6 +11,8 @@ part 'auth/initialize_app.dart';
 
 part 'leaderboard/get_leaderboard.dart';
 
+part 'words/get_random_word.dart';
+
 abstract class PendingActions {
   String get pendingId;
 }

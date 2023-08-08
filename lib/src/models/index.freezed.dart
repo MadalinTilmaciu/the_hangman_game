@@ -22,6 +22,7 @@ GameState _$GameStateFromJson(Map<String, dynamic> json) {
 mixin _$GameState {
   AuthState get auth => throw _privateConstructorUsedError;
   LeaderboardState get leaderboardList => throw _privateConstructorUsedError;
+  WordState get word => throw _privateConstructorUsedError;
   Set<String> get pendingActions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,10 +34,11 @@ mixin _$GameState {
 abstract class $GameStateCopyWith<$Res> {
   factory $GameStateCopyWith(GameState value, $Res Function(GameState) then) = _$GameStateCopyWithImpl<$Res, GameState>;
   @useResult
-  $Res call({AuthState auth, LeaderboardState leaderboardList, Set<String> pendingActions});
+  $Res call({AuthState auth, LeaderboardState leaderboardList, WordState word, Set<String> pendingActions});
 
   $AuthStateCopyWith<$Res> get auth;
   $LeaderboardStateCopyWith<$Res> get leaderboardList;
+  $WordStateCopyWith<$Res> get word;
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
   $Res call({
     Object? auth = null,
     Object? leaderboardList = null,
+    Object? word = null,
     Object? pendingActions = null,
   }) {
     return _then(_value.copyWith(
@@ -64,6 +67,10 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
           ? _value.leaderboardList
           : leaderboardList // ignore: cast_nullable_to_non_nullable
               as LeaderboardState,
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as WordState,
       pendingActions: null == pendingActions
           ? _value.pendingActions
           : pendingActions // ignore: cast_nullable_to_non_nullable
@@ -86,6 +93,14 @@ class _$GameStateCopyWithImpl<$Res, $Val extends GameState> implements $GameStat
       return _then(_value.copyWith(leaderboardList: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WordStateCopyWith<$Res> get word {
+    return $WordStateCopyWith<$Res>(_value.word, (value) {
+      return _then(_value.copyWith(word: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -94,12 +109,14 @@ abstract class _$$_GameStateCopyWith<$Res> implements $GameStateCopyWith<$Res> {
       __$$_GameStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthState auth, LeaderboardState leaderboardList, Set<String> pendingActions});
+  $Res call({AuthState auth, LeaderboardState leaderboardList, WordState word, Set<String> pendingActions});
 
   @override
   $AuthStateCopyWith<$Res> get auth;
   @override
   $LeaderboardStateCopyWith<$Res> get leaderboardList;
+  @override
+  $WordStateCopyWith<$Res> get word;
 }
 
 /// @nodoc
@@ -112,6 +129,7 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$_
   $Res call({
     Object? auth = null,
     Object? leaderboardList = null,
+    Object? word = null,
     Object? pendingActions = null,
   }) {
     return _then(_$_GameState(
@@ -123,6 +141,10 @@ class __$$_GameStateCopyWithImpl<$Res> extends _$GameStateCopyWithImpl<$Res, _$_
           ? _value.leaderboardList
           : leaderboardList // ignore: cast_nullable_to_non_nullable
               as LeaderboardState,
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as WordState,
       pendingActions: null == pendingActions
           ? _value._pendingActions
           : pendingActions // ignore: cast_nullable_to_non_nullable
@@ -137,6 +159,7 @@ class _$_GameState implements _GameState {
   const _$_GameState(
       {this.auth = const AuthState(),
       this.leaderboardList = const LeaderboardState(),
+      this.word = const WordState(),
       final Set<String> pendingActions = const <String>{}})
       : _pendingActions = pendingActions;
 
@@ -148,6 +171,9 @@ class _$_GameState implements _GameState {
   @override
   @JsonKey()
   final LeaderboardState leaderboardList;
+  @override
+  @JsonKey()
+  final WordState word;
   final Set<String> _pendingActions;
   @override
   @JsonKey()
@@ -159,7 +185,7 @@ class _$_GameState implements _GameState {
 
   @override
   String toString() {
-    return 'GameState(auth: $auth, leaderboardList: $leaderboardList, pendingActions: $pendingActions)';
+    return 'GameState(auth: $auth, leaderboardList: $leaderboardList, word: $word, pendingActions: $pendingActions)';
   }
 
   @override
@@ -169,13 +195,14 @@ class _$_GameState implements _GameState {
             other is _$_GameState &&
             (identical(other.auth, auth) || other.auth == auth) &&
             (identical(other.leaderboardList, leaderboardList) || other.leaderboardList == leaderboardList) &&
+            (identical(other.word, word) || other.word == word) &&
             const DeepCollectionEquality().equals(other._pendingActions, _pendingActions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, auth, leaderboardList, const DeepCollectionEquality().hash(_pendingActions));
+      Object.hash(runtimeType, auth, leaderboardList, word, const DeepCollectionEquality().hash(_pendingActions));
 
   @JsonKey(ignore: true)
   @override
@@ -192,7 +219,10 @@ class _$_GameState implements _GameState {
 
 abstract class _GameState implements GameState {
   const factory _GameState(
-      {final AuthState auth, final LeaderboardState leaderboardList, final Set<String> pendingActions}) = _$_GameState;
+      {final AuthState auth,
+      final LeaderboardState leaderboardList,
+      final WordState word,
+      final Set<String> pendingActions}) = _$_GameState;
 
   factory _GameState.fromJson(Map<String, dynamic> json) = _$_GameState.fromJson;
 
@@ -200,6 +230,8 @@ abstract class _GameState implements GameState {
   AuthState get auth;
   @override
   LeaderboardState get leaderboardList;
+  @override
+  WordState get word;
   @override
   Set<String> get pendingActions;
   @override
@@ -792,4 +824,298 @@ abstract class _LeaderboardState implements LeaderboardState {
   @override
   @JsonKey(ignore: true)
   _$$_LeaderboardStateCopyWith<_$_LeaderboardState> get copyWith => throw _privateConstructorUsedError;
+}
+
+Word _$WordFromJson(Map<String, dynamic> json) {
+  return _Word.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Word {
+  String get word => throw _privateConstructorUsedError;
+  String get definition => throw _privateConstructorUsedError;
+  String get pronunciation => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WordCopyWith<Word> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WordCopyWith<$Res> {
+  factory $WordCopyWith(Word value, $Res Function(Word) then) = _$WordCopyWithImpl<$Res, Word>;
+  @useResult
+  $Res call({String word, String definition, String pronunciation});
+}
+
+/// @nodoc
+class _$WordCopyWithImpl<$Res, $Val extends Word> implements $WordCopyWith<$Res> {
+  _$WordCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = null,
+    Object? definition = null,
+    Object? pronunciation = null,
+  }) {
+    return _then(_value.copyWith(
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
+      definition: null == definition
+          ? _value.definition
+          : definition // ignore: cast_nullable_to_non_nullable
+              as String,
+      pronunciation: null == pronunciation
+          ? _value.pronunciation
+          : pronunciation // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_WordCopyWith<$Res> implements $WordCopyWith<$Res> {
+  factory _$$_WordCopyWith(_$_Word value, $Res Function(_$_Word) then) = __$$_WordCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String word, String definition, String pronunciation});
+}
+
+/// @nodoc
+class __$$_WordCopyWithImpl<$Res> extends _$WordCopyWithImpl<$Res, _$_Word> implements _$$_WordCopyWith<$Res> {
+  __$$_WordCopyWithImpl(_$_Word _value, $Res Function(_$_Word) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = null,
+    Object? definition = null,
+    Object? pronunciation = null,
+  }) {
+    return _then(_$_Word(
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
+      definition: null == definition
+          ? _value.definition
+          : definition // ignore: cast_nullable_to_non_nullable
+              as String,
+      pronunciation: null == pronunciation
+          ? _value.pronunciation
+          : pronunciation // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Word implements _Word {
+  const _$_Word({required this.word, required this.definition, required this.pronunciation});
+
+  factory _$_Word.fromJson(Map<String, dynamic> json) => _$$_WordFromJson(json);
+
+  @override
+  final String word;
+  @override
+  final String definition;
+  @override
+  final String pronunciation;
+
+  @override
+  String toString() {
+    return 'Word(word: $word, definition: $definition, pronunciation: $pronunciation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Word &&
+            (identical(other.word, word) || other.word == word) &&
+            (identical(other.definition, definition) || other.definition == definition) &&
+            (identical(other.pronunciation, pronunciation) || other.pronunciation == pronunciation));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, word, definition, pronunciation);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WordCopyWith<_$_Word> get copyWith => __$$_WordCopyWithImpl<_$_Word>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WordToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Word implements Word {
+  const factory _Word(
+      {required final String word, required final String definition, required final String pronunciation}) = _$_Word;
+
+  factory _Word.fromJson(Map<String, dynamic> json) = _$_Word.fromJson;
+
+  @override
+  String get word;
+  @override
+  String get definition;
+  @override
+  String get pronunciation;
+  @override
+  @JsonKey(ignore: true)
+  _$$_WordCopyWith<_$_Word> get copyWith => throw _privateConstructorUsedError;
+}
+
+WordState _$WordStateFromJson(Map<String, dynamic> json) {
+  return _WordState.fromJson(json);
+}
+
+/// @nodoc
+mixin _$WordState {
+  Word? get word => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $WordStateCopyWith<WordState> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WordStateCopyWith<$Res> {
+  factory $WordStateCopyWith(WordState value, $Res Function(WordState) then) = _$WordStateCopyWithImpl<$Res, WordState>;
+  @useResult
+  $Res call({Word? word});
+
+  $WordCopyWith<$Res>? get word;
+}
+
+/// @nodoc
+class _$WordStateCopyWithImpl<$Res, $Val extends WordState> implements $WordStateCopyWith<$Res> {
+  _$WordStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = freezed,
+  }) {
+    return _then(_value.copyWith(
+      word: freezed == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as Word?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $WordCopyWith<$Res>? get word {
+    if (_value.word == null) {
+      return null;
+    }
+
+    return $WordCopyWith<$Res>(_value.word!, (value) {
+      return _then(_value.copyWith(word: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_WordStateCopyWith<$Res> implements $WordStateCopyWith<$Res> {
+  factory _$$_WordStateCopyWith(_$_WordState value, $Res Function(_$_WordState) then) =
+      __$$_WordStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Word? word});
+
+  @override
+  $WordCopyWith<$Res>? get word;
+}
+
+/// @nodoc
+class __$$_WordStateCopyWithImpl<$Res> extends _$WordStateCopyWithImpl<$Res, _$_WordState>
+    implements _$$_WordStateCopyWith<$Res> {
+  __$$_WordStateCopyWithImpl(_$_WordState _value, $Res Function(_$_WordState) _then) : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = freezed,
+  }) {
+    return _then(_$_WordState(
+      word: freezed == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as Word?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_WordState implements _WordState {
+  const _$_WordState({this.word});
+
+  factory _$_WordState.fromJson(Map<String, dynamic> json) => _$$_WordStateFromJson(json);
+
+  @override
+  final Word? word;
+
+  @override
+  String toString() {
+    return 'WordState(word: $word)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_WordState &&
+            (identical(other.word, word) || other.word == word));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, word);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_WordStateCopyWith<_$_WordState> get copyWith => __$$_WordStateCopyWithImpl<_$_WordState>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_WordStateToJson(
+      this,
+    );
+  }
+}
+
+abstract class _WordState implements WordState {
+  const factory _WordState({final Word? word}) = _$_WordState;
+
+  factory _WordState.fromJson(Map<String, dynamic> json) = _$_WordState.fromJson;
+
+  @override
+  Word? get word;
+  @override
+  @JsonKey(ignore: true)
+  _$$_WordStateCopyWith<_$_WordState> get copyWith => throw _privateConstructorUsedError;
 }

@@ -10,3 +10,6 @@ part 'auth/auth_state.dart';
 
 part 'leaderboard.dart/leaderboard_user.dart';
 part 'leaderboard.dart/leaderboard_state.dart';
+
+part 'words/word.dart';
+part 'words/word_state.dart';
