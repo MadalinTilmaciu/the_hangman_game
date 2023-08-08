@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'create_account_page.dart';
-import 'login_page.dart';
+import 'menu_page.dart';
+import 'under_construction_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class VictoryPage extends StatelessWidget {
+  const VictoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,17 +47,48 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: mediaQ.height / 6),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                    ? CrossAxisAlignment.start
-                    : CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      getTitleText(context, mediaQ, 'The', Colors.blue[900]!),
-                      getTitleText(context, mediaQ, 'Hangman', const Color(0xFFE91E63)),
+                      getTitleText(
+                        context,
+                        mediaQ,
+                        'Victory',
+                        Colors.blue[900]!,
+                        ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                            ? mediaQ.width / 12
+                            : ResponsiveBreakpoints.of(context).isTablet
+                                ? mediaQ.width / 10
+                                : mediaQ.width / 6,
+                      ),
+                      SizedBox(height: mediaQ.height / 24),
+                      getTitleText(
+                        context,
+                        mediaQ,
+                        'Your score',
+                        const Color(0xFFE91E63),
+                        ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                            ? mediaQ.width / 24
+                            : ResponsiveBreakpoints.of(context).isTablet
+                                ? mediaQ.width / 20
+                                : mediaQ.width / 12,
+                      ),
+                      SizedBox(height: mediaQ.height / 24),
+                      getTitleText(
+                        context,
+                        mediaQ,
+                        '500',
+                        const Color(0xFF9D27B0),
+                        ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                            ? mediaQ.width / 24
+                            : ResponsiveBreakpoints.of(context).isTablet
+                                ? mediaQ.width / 20
+                                : mediaQ.width / 12,
+                      ),
                     ],
                   ),
+                  SizedBox(height: mediaQ.height / 24),
                   Column(
                     children: <Widget>[
                       ElevatedButton(
@@ -65,43 +96,43 @@ class HomePage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => CreateAccountPage(),
-                            ),
-                          );
-                        },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
-                        child: Text(
-                          'Create Account',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xFFFFE0B2),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => LoginPage(),
+                              builder: (BuildContext context) => const UnderConstructionPage(),
                             ),
                           );
                         },
                         style: getButtonStyle(Colors.white),
                         child: Text(
-                          'Login',
+                          'Play again',
                           style: GoogleFonts.roboto(
                             textStyle: TextStyle(
                               fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
                               letterSpacing: 6,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                              builder: (BuildContext context) => const MenuPage(),
+                            ),
+                          );
+                        },
+                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        child: Text(
+                          'Back to menu',
+                          style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+                              letterSpacing: 6,
+                              fontWeight: FontWeight.bold,
+                              color: const Color(0xFFFFE0B2),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -134,15 +165,14 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Stack getTitleText(BuildContext context, Size mediaQ, String title, Color color) {
+  Stack getTitleText(BuildContext context, Size mediaQ, String title, Color color, double fontSize) {
     return Stack(
       children: <Widget>[
         Text(
           title,
           style: GoogleFonts.roboto(
             textStyle: TextStyle(
-              fontSize:
-                  ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP) ? mediaQ.width / 12 : mediaQ.width / 7,
+              fontSize: fontSize,
               height: 1,
               letterSpacing: 6,
               fontWeight: FontWeight.bold,
@@ -157,8 +187,7 @@ class HomePage extends StatelessWidget {
           title,
           style: GoogleFonts.roboto(
             textStyle: TextStyle(
-              fontSize:
-                  ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP) ? mediaQ.width / 12 : mediaQ.width / 7,
+              fontSize: fontSize,
               height: 1,
               letterSpacing: 6,
               fontWeight: FontWeight.bold,

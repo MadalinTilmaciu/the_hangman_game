@@ -26,84 +26,8 @@ class UnderConstructionPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'Under',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 11
-                                        : mediaQ.width / 8.5,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Under',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 11
-                                        : mediaQ.width / 8.5,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue[900],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'Construction',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 11
-                                        : mediaQ.width / 8.5,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Construction',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 11
-                                        : mediaQ.width / 8.5,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFFE91E63),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      getTitleText(context, mediaQ, 'Under', Colors.blue[900]!),
+                      getTitleText(context, mediaQ, 'Construction', const Color(0xFFE91E63)),
                     ],
                   ),
                 ],
@@ -128,6 +52,48 @@ class UnderConstructionPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Stack getTitleText(BuildContext context, Size mediaQ, String title, Color color) {
+    return Stack(
+      children: <Widget>[
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                  ? mediaQ.width / 12
+                  : ResponsiveBreakpoints.of(context).isTablet
+                      ? mediaQ.width / 11
+                      : mediaQ.width / 8.5,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 12
+                ..color = Colors.black,
+            ),
+          ),
+        ),
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                  ? mediaQ.width / 12
+                  : ResponsiveBreakpoints.of(context).isTablet
+                      ? mediaQ.width / 11
+                      : mediaQ.width / 8.5,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

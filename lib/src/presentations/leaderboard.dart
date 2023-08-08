@@ -19,7 +19,7 @@ class Leaderboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 7),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 9),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
@@ -70,7 +70,7 @@ class Leaderboard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 64),
+                      const SizedBox(height: 24),
                       UserContainer(
                         builder: (BuildContext context, GameUser? user) {
                           return LeaderboardContainer(
@@ -83,7 +83,11 @@ class Leaderboard extends StatelessWidget {
                                     width: 10,
                                   ),
                                 ),
-                                height: mediaQ.height / 3.5,
+                                height: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                                    ? mediaQ.height / 2.15
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.height / 2.4
+                                        : mediaQ.height / 4,
                                 width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 2
                                     : ResponsiveBreakpoints.of(context).isTablet

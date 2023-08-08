@@ -15,6 +15,7 @@ class WordsEpics implements EpicClass<GameState> {
     return combineEpics(
       <Epic<GameState>>[
         TypedEpic<GameState, GetRandomWordStart>(_getRandomWordStart).call,
+        TypedEpic<GameState, GetLetterPositionsStart>(_getLetterPositions).call,
       ],
     )(actions, store);
   }
@@ -26,6 +27,17 @@ class WordsEpics implements EpicClass<GameState> {
             .asyncMap((_) => _api.getRandomWord())
             .map((Word word) => GetRandomWord.successful(word))
             .onErrorReturnWith((Object error, StackTrace stackTrace) => GetRandomWord.error(error, stackTrace));
+      },
+    );
+  }
+
+  Stream<dynamic> _getLetterPositions(Stream<GetLetterPositionsStart> actions, EpicStore<GameState> store) {
+    return actions.flatMap(
+      (GetLetterPositionsStart action) {
+        return Stream<void>.value(null)
+            .asyncMap((_) => _api.getLetterPositions(action.word, action.letter))
+            .map((List<int> letterPositions) => GetLetterPositions.successful(letterPositions))
+            .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLetterPositions.error(error, stackTrace));
       },
     );
   }

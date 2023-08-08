@@ -17,4 +17,13 @@ class LeaderboardApi {
         .map((QueryDocumentSnapshot<Map<String, dynamic>> doc) => LeaderboardUser.fromJson(doc.data()))
         .toList();
   }
+
+  Future<void> updateUserScore(String uid, int score) async {
+    final QuerySnapshot<Map<String, dynamic>> leaderboard =
+        await _firestore.collection('/leaderboard').where('uid', isEqualTo: uid).get();
+
+    await _firestore.collection('/leaderboard').doc(leaderboard.docs.first.id).update(
+      <String, dynamic>{'score': (leaderboard.docs.first.data()['score'] as int) + score},
+    );
+  }
 }

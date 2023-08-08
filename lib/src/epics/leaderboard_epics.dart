@@ -15,6 +15,7 @@ class LeaderboardEpics implements EpicClass<GameState> {
     return combineEpics(
       <Epic<GameState>>[
         TypedEpic<GameState, GetLeaderboardStart>(_getLeaderboardStart).call,
+        TypedEpic<GameState, UpdateUserScoreStart>(_updateUserScoreStart).call,
       ],
     )(actions, store);
   }
@@ -26,6 +27,17 @@ class LeaderboardEpics implements EpicClass<GameState> {
             .asyncMap((_) => _api.getLeaderboard())
             .map((List<LeaderboardUser> leaderboardList) => GetLeaderboard.successful(leaderboardList))
             .onErrorReturnWith((Object error, StackTrace stackTrace) => GetLeaderboard.error(error, stackTrace));
+      },
+    );
+  }
+
+  Stream<dynamic> _updateUserScoreStart(Stream<UpdateUserScoreStart> actions, EpicStore<GameState> store) {
+    return actions.flatMap(
+      (UpdateUserScoreStart action) {
+        return Stream<void>.value(null)
+            .asyncMap((_) => _api.updateUserScore(action.uid, action.score))
+            .mapTo(const UpdateUserScore.successful())
+            .onErrorReturnWith((Object error, StackTrace stackTrace) => UpdateUserScore.error(error, stackTrace));
       },
     );
   }

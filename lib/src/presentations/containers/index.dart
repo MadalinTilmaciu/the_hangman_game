@@ -7,3 +7,4 @@ import '../../models/index.dart';
 part 'user_container.dart';
 part 'leaderboard_container.dart';
 part 'word_container.dart';
+part 'letter_positions.dart';

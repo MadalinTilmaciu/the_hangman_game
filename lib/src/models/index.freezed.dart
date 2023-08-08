@@ -987,6 +987,7 @@ WordState _$WordStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WordState {
   Word? get word => throw _privateConstructorUsedError;
+  List<int>? get letterPositions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -997,7 +998,7 @@ mixin _$WordState {
 abstract class $WordStateCopyWith<$Res> {
   factory $WordStateCopyWith(WordState value, $Res Function(WordState) then) = _$WordStateCopyWithImpl<$Res, WordState>;
   @useResult
-  $Res call({Word? word});
+  $Res call({Word? word, List<int>? letterPositions});
 
   $WordCopyWith<$Res>? get word;
 }
@@ -1015,12 +1016,17 @@ class _$WordStateCopyWithImpl<$Res, $Val extends WordState> implements $WordStat
   @override
   $Res call({
     Object? word = freezed,
+    Object? letterPositions = freezed,
   }) {
     return _then(_value.copyWith(
       word: freezed == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as Word?,
+      letterPositions: freezed == letterPositions
+          ? _value.letterPositions
+          : letterPositions // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 
@@ -1043,7 +1049,7 @@ abstract class _$$_WordStateCopyWith<$Res> implements $WordStateCopyWith<$Res> {
       __$$_WordStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Word? word});
+  $Res call({Word? word, List<int>? letterPositions});
 
   @override
   $WordCopyWith<$Res>? get word;
@@ -1058,12 +1064,17 @@ class __$$_WordStateCopyWithImpl<$Res> extends _$WordStateCopyWithImpl<$Res, _$_
   @override
   $Res call({
     Object? word = freezed,
+    Object? letterPositions = freezed,
   }) {
     return _then(_$_WordState(
       word: freezed == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
               as Word?,
+      letterPositions: freezed == letterPositions
+          ? _value._letterPositions
+          : letterPositions // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -1071,16 +1082,25 @@ class __$$_WordStateCopyWithImpl<$Res> extends _$WordStateCopyWithImpl<$Res, _$_
 /// @nodoc
 @JsonSerializable()
 class _$_WordState implements _WordState {
-  const _$_WordState({this.word});
+  const _$_WordState({this.word, final List<int>? letterPositions}) : _letterPositions = letterPositions;
 
   factory _$_WordState.fromJson(Map<String, dynamic> json) => _$$_WordStateFromJson(json);
 
   @override
   final Word? word;
+  final List<int>? _letterPositions;
+  @override
+  List<int>? get letterPositions {
+    final value = _letterPositions;
+    if (value == null) return null;
+    if (_letterPositions is EqualUnmodifiableListView) return _letterPositions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'WordState(word: $word)';
+    return 'WordState(word: $word, letterPositions: $letterPositions)';
   }
 
   @override
@@ -1088,12 +1108,13 @@ class _$_WordState implements _WordState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WordState &&
-            (identical(other.word, word) || other.word == word));
+            (identical(other.word, word) || other.word == word) &&
+            const DeepCollectionEquality().equals(other._letterPositions, _letterPositions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, word);
+  int get hashCode => Object.hash(runtimeType, word, const DeepCollectionEquality().hash(_letterPositions));
 
   @JsonKey(ignore: true)
   @override
@@ -1109,12 +1130,14 @@ class _$_WordState implements _WordState {
 }
 
 abstract class _WordState implements WordState {
-  const factory _WordState({final Word? word}) = _$_WordState;
+  const factory _WordState({final Word? word, final List<int>? letterPositions}) = _$_WordState;
 
   factory _WordState.fromJson(Map<String, dynamic> json) = _$_WordState.fromJson;
 
   @override
   Word? get word;
+  @override
+  List<int>? get letterPositions;
   @override
   @JsonKey(ignore: true)
   _$$_WordStateCopyWith<_$_WordState> get copyWith => throw _privateConstructorUsedError;

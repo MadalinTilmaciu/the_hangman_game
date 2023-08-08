@@ -22,4 +22,17 @@ class WordsApi {
 
     throw StateError(response.body);
   }
+
+  List<int> getLetterPositions(String word, String letter) {
+    final List<int> indexes = <int>[];
+
+    while (word.contains(letter)) {
+      final int index = word.indexOf(letter);
+
+      indexes.add(index);
+      word = word.substring(index + 1);
+    }
+
+    return indexes;
+  }
 }

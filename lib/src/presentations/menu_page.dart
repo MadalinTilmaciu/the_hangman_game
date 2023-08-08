@@ -12,8 +12,6 @@ import 'under_construction_page.dart';
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
 
-  static const String name = 'menu_page';
-
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
@@ -60,84 +58,8 @@ class MenuPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'The',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 9.5
-                                        : mediaQ.width / 8,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'The',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 9.5
-                                        : mediaQ.width / 8,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue[900],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'Hangman',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 9.5
-                                        : mediaQ.width / 8,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Hangman',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : ResponsiveBreakpoints.of(context).isTablet
-                                        ? mediaQ.width / 9.5
-                                        : mediaQ.width / 8,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFFE91E63),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      getTitleText(context, mediaQ, 'The', Colors.blue[900]!),
+                      getTitleText(context, mediaQ, 'Hangman', const Color(0xFFE91E63)),
                     ],
                   ),
                   Column(
@@ -244,6 +166,48 @@ class MenuPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Stack getTitleText(BuildContext context, Size mediaQ, String title, Color color) {
+    return Stack(
+      children: <Widget>[
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                  ? mediaQ.width / 12
+                  : ResponsiveBreakpoints.of(context).isTablet
+                      ? mediaQ.width / 9.5
+                      : mediaQ.width / 8,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 12
+                ..color = Colors.black,
+            ),
+          ),
+        ),
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+                  ? mediaQ.width / 12
+                  : ResponsiveBreakpoints.of(context).isTablet
+                      ? mediaQ.width / 9.5
+                      : mediaQ.width / 8,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

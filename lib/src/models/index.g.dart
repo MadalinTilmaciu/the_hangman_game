@@ -80,8 +80,10 @@ Map<String, dynamic> _$$_WordToJson(_$_Word instance) => <String, dynamic>{
 
 _$_WordState _$$_WordStateFromJson(Map<String, dynamic> json) => _$_WordState(
       word: json['word'] == null ? null : Word.fromJson(json['word'] as Map<String, dynamic>),
+      letterPositions: (json['letterPositions'] as List<dynamic>?)?.map((dynamic e) => e as int).toList(),
     );
 
 Map<String, dynamic> _$$_WordStateToJson(_$_WordState instance) => <String, dynamic>{
       'word': instance.word,
+      'letterPositions': instance.letterPositions,
     };

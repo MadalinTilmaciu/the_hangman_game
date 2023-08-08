@@ -20,6 +20,7 @@ class CustomTextInput extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: isObscure,
+      textAlignVertical: TextAlignVertical.center,
       style: TextStyle(
         fontSize: ResponsiveBreakpoints.of(context).largerThan(TABLET)
             ? 36

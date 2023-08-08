@@ -80,6 +80,7 @@ class TheHangman extends StatelessWidget {
     return StoreProvider<GameState>(
       store: store,
       child: MaterialApp(
+        title: 'The Hangman Game',
         theme: ThemeData(
           pageTransitionsTheme: PageTransitionsTheme(
             builders: kIsWeb
@@ -143,8 +144,6 @@ class TheHangman extends StatelessWidget {
             }
           },
         );
-      case MenuPage.name:
-        return const MenuPage();
       default:
         return const SizedBox.shrink();
     }

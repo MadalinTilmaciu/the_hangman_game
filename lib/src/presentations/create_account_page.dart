@@ -58,128 +58,18 @@ class CreateAccountPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'The',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'The',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue[900],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Stack(
-                        children: <Widget>[
-                          Text(
-                            'Hangman',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 12
-                                  ..color = Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            'Hangman',
-                            style: GoogleFonts.roboto(
-                              textStyle: TextStyle(
-                                fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                    ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
-                                height: 1,
-                                letterSpacing: 6,
-                                fontWeight: FontWeight.bold,
-                                color: const Color(0xFFE91E63),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      getTitleText(context, mediaQ, 'The', Colors.blue[900]!),
+                      getTitleText(context, mediaQ, 'Hangman', const Color(0xFFE91E63)),
                     ],
                   ),
                   Column(
                     children: <Widget>[
                       if (ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)) const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Name',
-                          isObscure: false,
-                          controller: name,
-                        ),
-                      ),
+                      getInput(context, mediaQ, 'Name', false, name),
                       const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Email',
-                          isObscure: false,
-                          controller: email,
-                        ),
-                      ),
+                      getInput(context, mediaQ, 'Email', false, email),
                       const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Password',
-                          isObscure: true,
-                          controller: password,
-                        ),
-                      ),
+                      getInput(context, mediaQ, 'Password', true, password),
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
@@ -232,6 +122,59 @@ class CreateAccountPage extends StatelessWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+
+  Stack getTitleText(BuildContext context, Size mediaQ, String title, Color color) {
+    return Stack(
+      children: <Widget>[
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize:
+                  ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP) ? mediaQ.width / 12 : mediaQ.width / 7,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 12
+                ..color = Colors.black,
+            ),
+          ),
+        ),
+        Text(
+          title,
+          style: GoogleFonts.roboto(
+            textStyle: TextStyle(
+              fontSize:
+                  ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP) ? mediaQ.width / 12 : mediaQ.width / 7,
+              height: 1,
+              letterSpacing: 6,
+              fontWeight: FontWeight.bold,
+              color: color,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  SizedBox getInput(
+      BuildContext context, Size mediaQ, String hintText, bool isObscure, TextEditingController controller) {
+    return SizedBox(
+      width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+          ? mediaQ.width / 3
+          : ResponsiveBreakpoints.of(context).isTablet
+              ? mediaQ.width / 2
+              : mediaQ.width / 1.3,
+      height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+      child: CustomTextInput(
+        hintText: hintText,
+        isObscure: isObscure,
+        controller: controller,
       ),
     );
   }
