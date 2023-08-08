@@ -5,9 +5,9 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../actions/index.dart';
 import '../models/index.dart';
-import 'game_page.dart';
 import 'home_page.dart';
 import 'leaderboard.dart';
+import 'under_construction_page.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -145,10 +145,10 @@ class MenuPage extends StatelessWidget {
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const GamePage(),
+                              builder: (BuildContext context) => const UnderConstructionPage(),
                             ),
                           );
                         },
