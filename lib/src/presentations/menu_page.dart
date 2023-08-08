@@ -5,41 +5,43 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../actions/index.dart';
 import '../models/index.dart';
-import '../widgets/text_input.dart';
+import 'game_page.dart';
+import 'home_page.dart';
+import 'leaderboard.dart';
 
-class CreateAccountPage extends StatelessWidget {
-  CreateAccountPage({super.key});
+class MenuPage extends StatelessWidget {
+  const MenuPage({super.key});
 
-  final TextEditingController name = TextEditingController();
-  final TextEditingController email = TextEditingController();
-  final TextEditingController password = TextEditingController();
+  static const String name = 'menu_page';
 
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
-    final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      backgroundColor: const Color(0xFF9D27B0),
-      elevation: 0,
-      side: const BorderSide(width: 6),
-      fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-          ? Size(
-              mediaQ.width / 3,
-              ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
-            )
-          : ResponsiveBreakpoints.of(context).isTablet
-              ? Size(
-                  mediaQ.width / 2,
-                  ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
-                )
-              : Size(
-                  mediaQ.width / 1.3,
-                  ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 10,
-                ),
-    );
+    ButtonStyle getButtonStyle(Color color) {
+      return ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        backgroundColor: color,
+        elevation: 0,
+        side: const BorderSide(width: 6),
+        fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
+            ? Size(
+                mediaQ.width / 3,
+                ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+              )
+            : ResponsiveBreakpoints.of(context).isTablet
+                ? Size(
+                    mediaQ.width / 2,
+                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
+                  )
+                : Size(
+                    mediaQ.width / 1.3,
+                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 10,
+                  ),
+      );
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -48,7 +50,7 @@ class CreateAccountPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 10),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 7),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
@@ -66,7 +68,9 @@ class CreateAccountPage extends StatelessWidget {
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -83,7 +87,9 @@ class CreateAccountPage extends StatelessWidget {
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -101,7 +107,9 @@ class CreateAccountPage extends StatelessWidget {
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -118,7 +126,9 @@ class CreateAccountPage extends StatelessWidget {
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 9.5
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -132,75 +142,76 @@ class CreateAccountPage extends StatelessWidget {
                   ),
                   Column(
                     children: <Widget>[
-                      if (ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)) const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Name',
-                          isObscure: false,
-                          controller: name,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Email',
-                          isObscure: false,
-                          controller: email,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
-                      SizedBox(
-                        width: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                            ? mediaQ.width / 3
-                            : ResponsiveBreakpoints.of(context).isTablet
-                                ? mediaQ.width / 2
-                                : mediaQ.width / 1.3,
-                        height: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
-                            ? mediaQ.height / 12
-                            : mediaQ.height / 16,
-                        child: CustomTextInput(
-                          hintText: 'Password',
-                          isObscure: true,
-                          controller: password,
+                      const SizedBox(height: 24),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                              builder: (BuildContext context) => const GamePage(),
+                            ),
+                          );
+                        },
+                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        child: Text(
+                          'Start game',
+                          style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+                              letterSpacing: 6,
+                              fontWeight: FontWeight.bold,
+                              color: const Color(0xFFFFE0B2),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ),
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
                           StoreProvider.of<GameState>(context).dispatch(
-                            CreateUser.start(
-                              name: name.text,
-                              email: email.text,
-                              password: password.text,
+                            const GetLeaderboard.start(),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                              builder: (BuildContext context) => const Leaderboard(),
                             ),
                           );
                         },
-                        style: buttonStyle,
+                        style: getButtonStyle(Colors.white),
                         child: Text(
-                          'Create Account',
+                          'Leaderboard',
                           style: GoogleFonts.roboto(
                             textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-                                  ? 36
-                                  : ResponsiveBreakpoints.of(context).isTablet
-                                      ? 32
-                                      : 24,
+                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+                              letterSpacing: 6,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      ElevatedButton(
+                        onPressed: () {
+                          StoreProvider.of<GameState>(context).dispatch(
+                            const LogoutUser.start(),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<dynamic>(
+                              builder: (BuildContext context) => const HomePage(),
+                            ),
+                          );
+                        },
+                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        child: Text(
+                          'Logout',
+                          style: GoogleFonts.roboto(
+                            textStyle: TextStyle(
+                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
                               letterSpacing: 6,
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFFFFE0B2),
@@ -219,13 +230,13 @@ class CreateAccountPage extends StatelessWidget {
                 children: <Widget>[
                   Image.asset(
                     'assets/partial_rope.png',
-                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
+                    scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.3 : 1.15,
                   ),
                   Transform.translate(
                     offset: const Offset(0, -32),
                     child: Image.asset(
                       'assets/hangman.png',
-                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.5 : 1.15,
+                      scale: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET) ? 1.3 : 1.15,
                     ),
                   ),
                 ],

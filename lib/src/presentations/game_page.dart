@@ -1,46 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-
-import '../actions/index.dart';
-import '../models/index.dart';
-import 'home_page.dart';
-import 'leaderboard.dart';
 
 class GamePage extends StatelessWidget {
   const GamePage({super.key});
 
-  static const String name = 'game_page';
-
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
-
-    ButtonStyle getButtonStyle(Color color) {
-      return ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        backgroundColor: color,
-        elevation: 0,
-        side: const BorderSide(width: 6),
-        fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
-            ? Size(
-                mediaQ.width / 3,
-                ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
-              )
-            : ResponsiveBreakpoints.of(context).isTablet
-                ? Size(
-                    mediaQ.width / 2,
-                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 16,
-                  )
-                : Size(
-                    mediaQ.width / 1.3,
-                    ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? mediaQ.height / 12 : mediaQ.height / 10,
-                  ),
-      );
-    }
 
     return SafeArea(
       child: Scaffold(
@@ -49,7 +16,7 @@ class GamePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 7),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 6),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
@@ -62,12 +29,14 @@ class GamePage extends StatelessWidget {
                       Stack(
                         children: <Widget>[
                           Text(
-                            'The',
+                            'Under',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 11
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -79,12 +48,14 @@ class GamePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'The',
+                            'Under',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 11
+                                        : mediaQ.width / 8,
                                 height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
@@ -97,12 +68,15 @@ class GamePage extends StatelessWidget {
                       Stack(
                         children: <Widget>[
                           Text(
-                            'Hangman',
+                            'Construction',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 11
+                                        : mediaQ.width / 8,
+                                height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 foreground: Paint()
@@ -113,12 +87,15 @@ class GamePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Hangman',
+                            'Construction',
                             style: GoogleFonts.roboto(
                               textStyle: TextStyle(
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
-                                    : mediaQ.width / 7,
+                                    : ResponsiveBreakpoints.of(context).isTablet
+                                        ? mediaQ.width / 11
+                                        : mediaQ.width / 8,
+                                height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 color: const Color(0xFFE91E63),
@@ -126,81 +103,6 @@ class GamePage extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      const SizedBox(height: 24),
-                      ElevatedButton(
-                        onPressed: () {},
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
-                        child: Text(
-                          'Start game',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xFFFFE0B2),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      ElevatedButton(
-                        onPressed: () {
-                          StoreProvider.of<GameState>(context).dispatch(
-                            const GetLeaderboard.start(),
-                          );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const Leaderboard(),
-                            ),
-                          );
-                        },
-                        style: getButtonStyle(Colors.white),
-                        child: Text(
-                          'Leaderboard',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      ElevatedButton(
-                        onPressed: () {
-                          StoreProvider.of<GameState>(context).dispatch(
-                            const LogoutUser.start(),
-                          );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const HomePage(),
-                            ),
-                          );
-                        },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
-                        child: Text(
-                          'Logout',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.bold,
-                              color: const Color(0xFFFFE0B2),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
                       ),
                     ],
                   ),

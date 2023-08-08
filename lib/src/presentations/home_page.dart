@@ -98,6 +98,7 @@ class HomePage extends StatelessWidget {
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
                                     : mediaQ.width / 7,
+                                height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 foreground: Paint()
@@ -114,6 +115,7 @@ class HomePage extends StatelessWidget {
                                 fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
                                     ? mediaQ.width / 12
                                     : mediaQ.width / 7,
+                                height: 1,
                                 letterSpacing: 6,
                                 fontWeight: FontWeight.bold,
                                 color: const Color(0xFFE91E63),
