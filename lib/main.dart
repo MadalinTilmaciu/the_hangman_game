@@ -23,8 +23,8 @@ import 'src/models/index.dart';
 import 'src/presentations/containers/index.dart';
 import 'src/presentations/home_page.dart';
 import 'src/presentations/menu_page.dart';
+import 'src/presentations/widgets/no_transition_builder.dart';
 import 'src/reducer/reducer.dart';
-import 'src/widgets/no_transition_builder.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

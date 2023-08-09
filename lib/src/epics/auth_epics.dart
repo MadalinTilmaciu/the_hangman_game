@@ -33,6 +33,7 @@ class AuthEpics implements EpicClass<GameState> {
               InitializeApp.successful(users.last),
               if (hasLoggedIn) ...<dynamic>[
                 const GetLeaderboard.start(),
+                GetCurrentRank.start(users.last!.uid),
               ]
             ];
           },

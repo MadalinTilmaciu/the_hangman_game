@@ -2505,6 +2505,543 @@ abstract class GetLeaderboardError implements GetLeaderboard, StopAction {
 }
 
 /// @nodoc
+mixin _$GetCurrentRank {
+  String get pendingId => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String uid, String pendingId) start,
+    required TResult Function(int rank, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String uid, String pendingId)? start,
+    TResult? Function(int rank, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String uid, String pendingId)? start,
+    TResult Function(int rank, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentRankStart value) start,
+    required TResult Function(GetCurrentRankSuccessful value) successful,
+    required TResult Function(GetCurrentRankError value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCurrentRankStart value)? start,
+    TResult? Function(GetCurrentRankSuccessful value)? successful,
+    TResult? Function(GetCurrentRankError value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentRankStart value)? start,
+    TResult Function(GetCurrentRankSuccessful value)? successful,
+    TResult Function(GetCurrentRankError value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $GetCurrentRankCopyWith<GetCurrentRank> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetCurrentRankCopyWith<$Res> {
+  factory $GetCurrentRankCopyWith(GetCurrentRank value, $Res Function(GetCurrentRank) then) =
+      _$GetCurrentRankCopyWithImpl<$Res, GetCurrentRank>;
+  @useResult
+  $Res call({String pendingId});
+}
+
+/// @nodoc
+class _$GetCurrentRankCopyWithImpl<$Res, $Val extends GetCurrentRank> implements $GetCurrentRankCopyWith<$Res> {
+  _$GetCurrentRankCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? pendingId = null,
+  }) {
+    return _then(_value.copyWith(
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$GetCurrentRankStartCopyWith<$Res> implements $GetCurrentRankCopyWith<$Res> {
+  factory _$$GetCurrentRankStartCopyWith(_$GetCurrentRankStart value, $Res Function(_$GetCurrentRankStart) then) =
+      __$$GetCurrentRankStartCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String uid, String pendingId});
+}
+
+/// @nodoc
+class __$$GetCurrentRankStartCopyWithImpl<$Res> extends _$GetCurrentRankCopyWithImpl<$Res, _$GetCurrentRankStart>
+    implements _$$GetCurrentRankStartCopyWith<$Res> {
+  __$$GetCurrentRankStartCopyWithImpl(_$GetCurrentRankStart _value, $Res Function(_$GetCurrentRankStart) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? uid = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetCurrentRankStart(
+      null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetCurrentRankStart implements GetCurrentRankStart {
+  const _$GetCurrentRankStart(this.uid, {this.pendingId = _kGetCurrentRankPendingId});
+
+  @override
+  final String uid;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetCurrentRank.start(uid: $uid, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCurrentRankStart &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, uid, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCurrentRankStartCopyWith<_$GetCurrentRankStart> get copyWith =>
+      __$$GetCurrentRankStartCopyWithImpl<_$GetCurrentRankStart>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String uid, String pendingId) start,
+    required TResult Function(int rank, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return start(uid, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String uid, String pendingId)? start,
+    TResult? Function(int rank, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return start?.call(uid, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String uid, String pendingId)? start,
+    TResult Function(int rank, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(uid, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentRankStart value) start,
+    required TResult Function(GetCurrentRankSuccessful value) successful,
+    required TResult Function(GetCurrentRankError value) error,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCurrentRankStart value)? start,
+    TResult? Function(GetCurrentRankSuccessful value)? successful,
+    TResult? Function(GetCurrentRankError value)? error,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentRankStart value)? start,
+    TResult Function(GetCurrentRankSuccessful value)? successful,
+    TResult Function(GetCurrentRankError value)? error,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCurrentRankStart implements GetCurrentRank, StartAction {
+  const factory GetCurrentRankStart(final String uid, {final String pendingId}) = _$GetCurrentRankStart;
+
+  String get uid;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetCurrentRankStartCopyWith<_$GetCurrentRankStart> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetCurrentRankSuccessfulCopyWith<$Res> implements $GetCurrentRankCopyWith<$Res> {
+  factory _$$GetCurrentRankSuccessfulCopyWith(
+          _$GetCurrentRankSuccessful value, $Res Function(_$GetCurrentRankSuccessful) then) =
+      __$$GetCurrentRankSuccessfulCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int rank, String pendingId});
+}
+
+/// @nodoc
+class __$$GetCurrentRankSuccessfulCopyWithImpl<$Res>
+    extends _$GetCurrentRankCopyWithImpl<$Res, _$GetCurrentRankSuccessful>
+    implements _$$GetCurrentRankSuccessfulCopyWith<$Res> {
+  __$$GetCurrentRankSuccessfulCopyWithImpl(
+      _$GetCurrentRankSuccessful _value, $Res Function(_$GetCurrentRankSuccessful) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? rank = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetCurrentRankSuccessful(
+      null == rank
+          ? _value.rank
+          : rank // ignore: cast_nullable_to_non_nullable
+              as int,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetCurrentRankSuccessful implements GetCurrentRankSuccessful {
+  const _$GetCurrentRankSuccessful(this.rank, {this.pendingId = _kGetCurrentRankPendingId});
+
+  @override
+  final int rank;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetCurrentRank.successful(rank: $rank, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCurrentRankSuccessful &&
+            (identical(other.rank, rank) || other.rank == rank) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, rank, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCurrentRankSuccessfulCopyWith<_$GetCurrentRankSuccessful> get copyWith =>
+      __$$GetCurrentRankSuccessfulCopyWithImpl<_$GetCurrentRankSuccessful>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String uid, String pendingId) start,
+    required TResult Function(int rank, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return successful(rank, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String uid, String pendingId)? start,
+    TResult? Function(int rank, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return successful?.call(rank, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String uid, String pendingId)? start,
+    TResult Function(int rank, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(rank, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentRankStart value) start,
+    required TResult Function(GetCurrentRankSuccessful value) successful,
+    required TResult Function(GetCurrentRankError value) error,
+  }) {
+    return successful(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCurrentRankStart value)? start,
+    TResult? Function(GetCurrentRankSuccessful value)? successful,
+    TResult? Function(GetCurrentRankError value)? error,
+  }) {
+    return successful?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentRankStart value)? start,
+    TResult Function(GetCurrentRankSuccessful value)? successful,
+    TResult Function(GetCurrentRankError value)? error,
+    required TResult orElse(),
+  }) {
+    if (successful != null) {
+      return successful(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCurrentRankSuccessful implements GetCurrentRank, StopAction {
+  const factory GetCurrentRankSuccessful(final int rank, {final String pendingId}) = _$GetCurrentRankSuccessful;
+
+  int get rank;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetCurrentRankSuccessfulCopyWith<_$GetCurrentRankSuccessful> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetCurrentRankErrorCopyWith<$Res> implements $GetCurrentRankCopyWith<$Res> {
+  factory _$$GetCurrentRankErrorCopyWith(_$GetCurrentRankError value, $Res Function(_$GetCurrentRankError) then) =
+      __$$GetCurrentRankErrorCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Object error, StackTrace stackTrace, String pendingId});
+}
+
+/// @nodoc
+class __$$GetCurrentRankErrorCopyWithImpl<$Res> extends _$GetCurrentRankCopyWithImpl<$Res, _$GetCurrentRankError>
+    implements _$$GetCurrentRankErrorCopyWith<$Res> {
+  __$$GetCurrentRankErrorCopyWithImpl(_$GetCurrentRankError _value, $Res Function(_$GetCurrentRankError) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+    Object? stackTrace = null,
+    Object? pendingId = null,
+  }) {
+    return _then(_$GetCurrentRankError(
+      null == error ? _value.error : error,
+      null == stackTrace
+          ? _value.stackTrace
+          : stackTrace // ignore: cast_nullable_to_non_nullable
+              as StackTrace,
+      pendingId: null == pendingId
+          ? _value.pendingId
+          : pendingId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetCurrentRankError implements GetCurrentRankError {
+  const _$GetCurrentRankError(this.error, this.stackTrace, {this.pendingId = _kGetCurrentRankPendingId});
+
+  @override
+  final Object error;
+  @override
+  final StackTrace stackTrace;
+  @override
+  @JsonKey()
+  final String pendingId;
+
+  @override
+  String toString() {
+    return 'GetCurrentRank.error(error: $error, stackTrace: $stackTrace, pendingId: $pendingId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCurrentRankError &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.stackTrace, stackTrace) || other.stackTrace == stackTrace) &&
+            (identical(other.pendingId, pendingId) || other.pendingId == pendingId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(error), stackTrace, pendingId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetCurrentRankErrorCopyWith<_$GetCurrentRankError> get copyWith =>
+      __$$GetCurrentRankErrorCopyWithImpl<_$GetCurrentRankError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String uid, String pendingId) start,
+    required TResult Function(int rank, String pendingId) successful,
+    required TResult Function(Object error, StackTrace stackTrace, String pendingId) error,
+  }) {
+    return error(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String uid, String pendingId)? start,
+    TResult? Function(int rank, String pendingId)? successful,
+    TResult? Function(Object error, StackTrace stackTrace, String pendingId)? error,
+  }) {
+    return error?.call(this.error, stackTrace, pendingId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String uid, String pendingId)? start,
+    TResult Function(int rank, String pendingId)? successful,
+    TResult Function(Object error, StackTrace stackTrace, String pendingId)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error, stackTrace, pendingId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetCurrentRankStart value) start,
+    required TResult Function(GetCurrentRankSuccessful value) successful,
+    required TResult Function(GetCurrentRankError value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetCurrentRankStart value)? start,
+    TResult? Function(GetCurrentRankSuccessful value)? successful,
+    TResult? Function(GetCurrentRankError value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetCurrentRankStart value)? start,
+    TResult Function(GetCurrentRankSuccessful value)? successful,
+    TResult Function(GetCurrentRankError value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetCurrentRankError implements GetCurrentRank, StopAction {
+  const factory GetCurrentRankError(final Object error, final StackTrace stackTrace, {final String pendingId}) =
+      _$GetCurrentRankError;
+
+  Object get error;
+  StackTrace get stackTrace;
+  @override
+  String get pendingId;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetCurrentRankErrorCopyWith<_$GetCurrentRankError> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UpdateUserScore {
   String get pendingId => throw _privateConstructorUsedError;
   @optionalTypeArgs

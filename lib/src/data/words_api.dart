@@ -17,7 +17,7 @@ class WordsApi {
     final Response response = await _client.get(uri);
 
     if (response.statusCode == 200) {
-      return Word.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
+      return Word.fromJson((jsonDecode(response.body) as List<dynamic>)[0] as Map<String, dynamic>);
     }
 
     throw StateError(response.body);

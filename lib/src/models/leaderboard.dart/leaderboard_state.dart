@@ -4,6 +4,7 @@ part of '../index.dart';
 class LeaderboardState with _$LeaderboardState {
   const factory LeaderboardState({
     @Default(<LeaderboardUser>[]) List<LeaderboardUser> leaderboardList,
+    int? rank,
   }) = _LeaderboardState;
 
   factory LeaderboardState.fromJson(Map<String, dynamic> json) =>

@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 6),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)

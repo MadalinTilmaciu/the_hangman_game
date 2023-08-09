@@ -5,7 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../actions/index.dart';
 import '../models/index.dart';
-import '../widgets/text_input.dart';
+import '../presentations/widgets/text_input.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});

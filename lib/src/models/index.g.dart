@@ -8,9 +8,9 @@ part of 'index.dart';
 
 _$_GameState _$$_GameStateFromJson(Map<String, dynamic> json) => _$_GameState(
       auth: json['auth'] == null ? const AuthState() : AuthState.fromJson(json['auth'] as Map<String, dynamic>),
-      leaderboardList: json['leaderboardList'] == null
+      leaderboard: json['leaderboard'] == null
           ? const LeaderboardState()
-          : LeaderboardState.fromJson(json['leaderboardList'] as Map<String, dynamic>),
+          : LeaderboardState.fromJson(json['leaderboard'] as Map<String, dynamic>),
       word: json['word'] == null ? const WordState() : WordState.fromJson(json['word'] as Map<String, dynamic>),
       pendingActions:
           (json['pendingActions'] as List<dynamic>?)?.map((dynamic e) => e as String).toSet() ?? const <String>{},
@@ -18,7 +18,7 @@ _$_GameState _$$_GameStateFromJson(Map<String, dynamic> json) => _$_GameState(
 
 Map<String, dynamic> _$$_GameStateToJson(_$_GameState instance) => <String, dynamic>{
       'auth': instance.auth,
-      'leaderboardList': instance.leaderboardList,
+      'leaderboard': instance.leaderboard,
       'word': instance.word,
       'pendingActions': instance.pendingActions.toList(),
     };
@@ -60,10 +60,12 @@ _$_LeaderboardState _$$_LeaderboardStateFromJson(Map<String, dynamic> json) => _
               ?.map((dynamic e) => LeaderboardUser.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <LeaderboardUser>[],
+      rank: json['rank'] as int?,
     );
 
 Map<String, dynamic> _$$_LeaderboardStateToJson(_$_LeaderboardState instance) => <String, dynamic>{
       'leaderboardList': instance.leaderboardList,
+      'rank': instance.rank,
     };
 
 _$_Word _$$_WordFromJson(Map<String, dynamic> json) => _$_Word(

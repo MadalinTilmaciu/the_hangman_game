@@ -10,6 +10,7 @@ part 'auth/logout_user.dart';
 part 'auth/initialize_app.dart';
 
 part 'leaderboard/get_leaderboard.dart';
+part 'leaderboard/get_current_rank.dart';
 part 'leaderboard/update_user_score.dart';
 
 part 'words/get_random_word.dart';

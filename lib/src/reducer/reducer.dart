@@ -26,7 +26,7 @@ GameState _reducer(GameState state, dynamic action) {
 
   return state.copyWith(
     auth: authReducer(state.auth, action),
-    leaderboardList: leaderboardReducer(state.leaderboardList, action),
+    leaderboard: leaderboardReducer(state.leaderboard, action),
     word: wordsReducer(state.word, action),
   );
 }

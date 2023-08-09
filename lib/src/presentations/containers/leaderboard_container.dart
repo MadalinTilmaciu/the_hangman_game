@@ -11,7 +11,7 @@ class LeaderboardContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<GameState, List<LeaderboardUser>>(
-      converter: (Store<GameState> store) => store.state.leaderboardList.leaderboardList,
+      converter: (Store<GameState> store) => store.state.leaderboard.leaderboardList,
       builder: builder,
     );
   }

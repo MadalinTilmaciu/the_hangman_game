@@ -5,6 +5,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import '../actions/index.dart';
 import '../models/index.dart';
+import 'containers/index.dart';
 import 'home_page.dart';
 import 'leaderboard.dart';
 import 'under_construction_page.dart';
@@ -48,7 +49,7 @@ class MenuPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 7),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
@@ -67,11 +68,18 @@ class MenuPage extends StatelessWidget {
                       const SizedBox(height: 24),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const UnderConstructionPage(),
-                            ),
+                          StoreProvider.of<GameState>(context).dispatch(
+                            const GetRandomWord.start(),
+                          );
+                          Future<dynamic>.delayed(const Duration(milliseconds: 300)).then(
+                            (dynamic value) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) => const UnderConstructionPage(),
+                                ),
+                              );
+                            },
                           );
                         },
                         style: getButtonStyle(const Color(0xFF9D27B0)),
@@ -89,31 +97,39 @@ class MenuPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 24),
-                      ElevatedButton(
-                        onPressed: () {
-                          StoreProvider.of<GameState>(context).dispatch(
-                            const GetLeaderboard.start(),
-                          );
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const Leaderboard(),
+                      UserContainer(
+                        builder: (BuildContext context, GameUser? user) {
+                          return ElevatedButton(
+                            onPressed: () {
+                              StoreProvider.of<GameState>(context)
+                                ..dispatch(
+                                  const GetLeaderboard.start(),
+                                )
+                                ..dispatch(
+                                  GetCurrentRank.start(user!.uid),
+                                );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) => const Leaderboard(),
+                                ),
+                              );
+                            },
+                            style: getButtonStyle(Colors.white),
+                            child: Text(
+                              'Leaderboard',
+                              style: GoogleFonts.roboto(
+                                textStyle: TextStyle(
+                                  fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
+                                  letterSpacing: 6,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
                           );
                         },
-                        style: getButtonStyle(Colors.white),
-                        child: Text(
-                          'Leaderboard',
-                          style: GoogleFonts.roboto(
-                            textStyle: TextStyle(
-                              fontSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET) ? 36 : 24,
-                              letterSpacing: 6,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ),
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(
