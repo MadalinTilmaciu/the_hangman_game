@@ -19,7 +19,7 @@ class Leaderboard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 16),
+              padding: EdgeInsets.symmetric(vertical: mediaQ.height / 18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
@@ -89,7 +89,7 @@ class Leaderboard extends StatelessWidget {
                                     ? mediaQ.width / 2.25
                                     : ResponsiveBreakpoints.of(context).isTablet
                                         ? mediaQ.width / 1.75
-                                        : mediaQ.width / 1.5,
+                                        : mediaQ.width / 1.25,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                     left: 16,
@@ -129,7 +129,7 @@ class Leaderboard extends StatelessWidget {
                                           ),
                                           SizedBox(
                                             width: ResponsiveBreakpoints.of(context).isMobile
-                                                ? mediaQ.width / 5
+                                                ? mediaQ.width / 4
                                                 : mediaQ.width / 7,
                                             child: Text(
                                               leaderboard[index].score.toString(),

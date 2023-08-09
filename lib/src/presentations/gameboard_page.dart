@@ -12,6 +12,7 @@ class GameboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
+    final List<String> alphabet = List<String>.generate(26, (int index) => String.fromCharCode(index + 65));
 
     // ButtonStyle getButtonStyle(Color color) {
     //   return ElevatedButton.styleFrom(
@@ -60,10 +61,10 @@ class GameboardPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: mediaQ.height / 24),
                       child: Column(
-                        mainAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                        mainAxisAlignment: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                             ? MainAxisAlignment.spaceBetween
                             : MainAxisAlignment.center,
-                        crossAxisAlignment: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                        crossAxisAlignment: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                             ? CrossAxisAlignment.start
                             : CrossAxisAlignment.center,
                         children: <Widget>[
@@ -77,7 +78,7 @@ class GameboardPage extends StatelessWidget {
                           ),
                           SizedBox(height: mediaQ.height / 24),
                           ResponsiveRowColumn(
-                            layout: ResponsiveBreakpoints.of(context).largerOrEqualTo(TABLET)
+                            layout: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                                 ? ResponsiveRowColumnType.ROW
                                 : ResponsiveRowColumnType.COLUMN,
                             rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,11 +90,11 @@ class GameboardPage extends StatelessWidget {
                                   scale: ResponsiveBreakpoints.of(context).largerThan(TABLET)
                                       ? 1.6
                                       : ResponsiveBreakpoints.of(context).isTablet
-                                          ? 1.75
+                                          ? 3
                                           : 5,
                                 ),
                               ),
-                              if (ResponsiveBreakpoints.of(context).smallerThan(TABLET))
+                              if (ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET))
                                 ResponsiveRowColumnItem(
                                   child: Transform.translate(
                                     offset: const Offset(0, -8),
@@ -106,38 +107,83 @@ class GameboardPage extends StatelessWidget {
                                   ),
                                 ),
                               ResponsiveRowColumnItem(
-                                child: ResponsiveBreakpoints.of(context).smallerThan(TABLET)
-                                    ? SizedBox(height: mediaQ.height / 24)
-                                    : SizedBox(width: mediaQ.width / 10),
+                                child: ResponsiveBreakpoints.of(context).smallerOrEqualTo(TABLET)
+                                    ? SizedBox(height: mediaQ.height / 32)
+                                    : SizedBox(width: mediaQ.width / 8),
                               ),
                               ResponsiveRowColumnItem(
                                 child: SizedBox(
-                                  width: mediaQ.width / 2,
-                                  child: GridView.builder(
-                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 4,
-                                      mainAxisSpacing: 4,
-                                    ),
-                                    shrinkWrap: true,
-                                    itemCount: word!.word.length,
-                                    itemBuilder: (BuildContext context, int index) {
-                                      return Container(
-                                        width: 120,
-                                        height: 10,
-                                        margin: const EdgeInsets.all(4),
-                                        alignment: Alignment.center,
-                                        decoration: const BoxDecoration(
-                                          border: Border(
-                                            bottom: BorderSide(width: 3),
-                                          ),
-                                          color: Colors.red,
+                                  width: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                                      ? mediaQ.width / 2.5
+                                      : mediaQ.width / 2,
+                                  child: Column(
+                                    children: <Widget>[
+                                      GridView.builder(
+                                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount:
+                                              word!.word.length > 12 ? word.word.length ~/ 1.5 : word.word.length,
+                                          mainAxisSpacing: 24,
                                         ),
-                                        child: const Text(
-                                          '',
-                                          style: TextStyle(fontSize: 10),
+                                        shrinkWrap: true,
+                                        itemCount: word.word.length,
+                                        itemBuilder: (BuildContext context, int index) {
+                                          return SizedBox(
+                                            width: 10,
+                                            height: 10,
+                                            child: Container(
+                                              margin: const EdgeInsets.all(4),
+                                              alignment: Alignment.center,
+                                              decoration: const BoxDecoration(
+                                                border: Border(
+                                                  bottom: BorderSide(width: 3),
+                                                ),
+                                                color: Color(0xFF9D27B0),
+                                              ),
+                                              child: const Text(
+                                                '',
+                                                style: TextStyle(fontSize: 10),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                      SizedBox(height: mediaQ.height / 16),
+                                      SizedBox(
+                                        width: ResponsiveBreakpoints.of(context).largerThan(TABLET)
+                                            ? mediaQ.width / 2.5
+                                            : mediaQ.width / 2,
+                                        child: Column(
+                                          children: <Widget>[
+                                            GridView.builder(
+                                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                crossAxisCount: 10,
+                                                mainAxisSpacing: 8,
+                                                crossAxisSpacing: 8,
+                                              ),
+                                              itemCount: alphabet.length,
+                                              shrinkWrap: true,
+                                              itemBuilder: (BuildContext context, int index) {
+                                                return ElevatedButton(
+                                                  onPressed: () {},
+                                                  style: ElevatedButton.styleFrom(
+                                                    backgroundColor: Colors.white,
+                                                    elevation: 0,
+                                                    side: const BorderSide(width: 2),
+                                                  ),
+                                                  child: Text(
+                                                    alphabet[index],
+                                                    style: const TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight: FontWeight.w600,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ),
+                                          ],
                                         ),
-                                      );
-                                    },
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
