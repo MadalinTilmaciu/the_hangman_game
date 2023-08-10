@@ -10,6 +10,8 @@ import '../presentations/widgets/text_input.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
 
+  static const String route = 'login';
+
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
 

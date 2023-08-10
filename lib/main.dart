@@ -21,8 +21,15 @@ import 'src/epics/leaderboard_epics.dart';
 import 'src/epics/words_epics.dart';
 import 'src/models/index.dart';
 import 'src/presentations/containers/index.dart';
+import 'src/presentations/create_account_page.dart';
+import 'src/presentations/game_over_page.dart';
+import 'src/presentations/gameboard_page.dart';
 import 'src/presentations/home_page.dart';
+import 'src/presentations/leaderboard.dart';
+import 'src/presentations/login_page.dart';
 import 'src/presentations/menu_page.dart';
+import 'src/presentations/under_construction_page.dart';
+import 'src/presentations/victory_page.dart';
 import 'src/presentations/widgets/no_transition_builder.dart';
 import 'src/reducer/reducer.dart';
 
@@ -144,6 +151,20 @@ class TheHangman extends StatelessWidget {
             }
           },
         );
+      case CreateAccountPage.route:
+        return CreateAccountPage();
+      case LoginPage.route:
+        return LoginPage();
+      case LeaderboardPage.route:
+        return const LeaderboardPage();
+      case UnderConstructionPage.route:
+        return const UnderConstructionPage();
+      case GameboardPage.route:
+        return const GameboardPage();
+      case VictoryPage.route:
+        return const VictoryPage();
+      case GameOverPage.route:
+        return const GameOverPage();
       default:
         return const SizedBox.shrink();
     }

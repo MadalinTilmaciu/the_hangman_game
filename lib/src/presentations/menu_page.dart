@@ -17,12 +17,13 @@ class MenuPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
-    ButtonStyle getButtonStyle(Color color) {
+    ButtonStyle getButtonStyle(Color color, Color foregroundColor) {
       return ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         backgroundColor: color,
+        foregroundColor: foregroundColor,
         elevation: 0,
         side: const BorderSide(width: 6),
         fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
@@ -73,7 +74,7 @@ class MenuPage extends StatelessWidget {
                           );
                           Future<dynamic>.delayed(const Duration(milliseconds: 300)).then(
                             (dynamic value) {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute<dynamic>(
                                   builder: (BuildContext context) => const UnderConstructionPage(),
@@ -82,7 +83,7 @@ class MenuPage extends StatelessWidget {
                             },
                           );
                         },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        style: getButtonStyle(const Color(0xFF9D27B0), Colors.white),
                         child: Text(
                           'Start game',
                           style: GoogleFonts.roboto(
@@ -111,11 +112,11 @@ class MenuPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute<dynamic>(
-                                  builder: (BuildContext context) => const Leaderboard(),
+                                  builder: (BuildContext context) => const LeaderboardPage(),
                                 ),
                               );
                             },
-                            style: getButtonStyle(Colors.white),
+                            style: getButtonStyle(Colors.white, const Color(0xFF9D27B0)),
                             child: Text(
                               'Leaderboard',
                               style: GoogleFonts.roboto(
@@ -144,7 +145,7 @@ class MenuPage extends StatelessWidget {
                             ),
                           );
                         },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        style: getButtonStyle(const Color(0xFF9D27B0), Colors.white),
                         child: Text(
                           'Logout',
                           style: GoogleFonts.roboto(

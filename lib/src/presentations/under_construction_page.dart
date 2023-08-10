@@ -5,6 +5,8 @@ import 'package:responsive_framework/responsive_framework.dart';
 class UnderConstructionPage extends StatelessWidget {
   const UnderConstructionPage({super.key});
 
+  static const String route = 'under_construction';
+
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;

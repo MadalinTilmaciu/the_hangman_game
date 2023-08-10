@@ -26,11 +26,10 @@ class WordsApi {
   List<int> getLetterPositions(String word, String letter) {
     final List<int> indexes = <int>[];
 
-    while (word.contains(letter)) {
-      final int index = word.indexOf(letter);
-
-      indexes.add(index);
-      word = word.substring(index + 1);
+    for (int i = 0; i < word.length; i++) {
+      if (word[i] == letter) {
+        indexes.add(i);
+      }
     }
 
     return indexes;

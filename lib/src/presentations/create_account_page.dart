@@ -10,6 +10,8 @@ import '../presentations/widgets/text_input.dart';
 class CreateAccountPage extends StatelessWidget {
   CreateAccountPage({super.key});
 
+  static const String route = 'create_account';
+
   final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();

@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../actions/index.dart';
+import '../models/index.dart';
+import 'gameboard_page.dart';
 import 'menu_page.dart';
-import 'under_construction_page.dart';
 
 class VictoryPage extends StatelessWidget {
   const VictoryPage({super.key});
+
+  static const String route = 'victory';
 
   @override
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
-    ButtonStyle getButtonStyle(Color color) {
+    ButtonStyle getButtonStyle(Color color, Color foregroundColor) {
       return ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         backgroundColor: color,
+        foregroundColor: foregroundColor,
         elevation: 0,
         side: const BorderSide(width: 6),
         fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
@@ -93,14 +99,21 @@ class VictoryPage extends StatelessWidget {
                     children: <Widget>[
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<dynamic>(
-                              builder: (BuildContext context) => const UnderConstructionPage(),
-                            ),
+                          StoreProvider.of<GameState>(context).dispatch(
+                            const GetRandomWord.start(),
+                          );
+                          Future<dynamic>.delayed(const Duration(milliseconds: 300)).then(
+                            (dynamic value) {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute<dynamic>(
+                                  builder: (BuildContext context) => const GameboardPage(),
+                                ),
+                              );
+                            },
                           );
                         },
-                        style: getButtonStyle(Colors.white),
+                        style: getButtonStyle(Colors.white, const Color(0xFF9D27B0)),
                         child: Text(
                           'Play again',
                           style: GoogleFonts.roboto(
@@ -117,14 +130,14 @@ class VictoryPage extends StatelessWidget {
                       const SizedBox(height: 12),
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute<dynamic>(
                               builder: (BuildContext context) => const MenuPage(),
                             ),
                           );
                         },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        style: getButtonStyle(const Color(0xFF9D27B0), Colors.white),
                         child: Text(
                           'Back to menu',
                           style: GoogleFonts.roboto(

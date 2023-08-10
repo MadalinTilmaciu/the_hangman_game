@@ -1,7 +1,7 @@
 part of 'index.dart';
 
-class LetterPositions extends StatelessWidget {
-  const LetterPositions({
+class LetterPositionsContainer extends StatelessWidget {
+  const LetterPositionsContainer({
     super.key,
     required this.builder,
   });

@@ -5,8 +5,10 @@ import 'package:responsive_framework/responsive_framework.dart';
 import '../models/index.dart';
 import 'containers/index.dart';
 
-class Leaderboard extends StatelessWidget {
-  const Leaderboard({super.key});
+class LeaderboardPage extends StatelessWidget {
+  const LeaderboardPage({super.key});
+
+  static const String route = 'leaderboard';
 
   @override
   Widget build(BuildContext context) {

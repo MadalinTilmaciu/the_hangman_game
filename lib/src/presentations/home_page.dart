@@ -12,12 +12,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size mediaQ = MediaQuery.of(context).size;
 
-    ButtonStyle getButtonStyle(Color color) {
+    ButtonStyle getButtonStyle(Color color, Color foregroundColor) {
       return ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),
         backgroundColor: color,
+        foregroundColor: foregroundColor,
         elevation: 0,
         side: const BorderSide(width: 6),
         fixedSize: ResponsiveBreakpoints.of(context).largerOrEqualTo(DESKTOP)
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
                             ),
                           );
                         },
-                        style: getButtonStyle(const Color(0xFF9D27B0)),
+                        style: getButtonStyle(const Color(0xFF9D27B0), Colors.white),
                         child: Text(
                           'Create Account',
                           style: GoogleFonts.roboto(
@@ -93,7 +94,7 @@ class HomePage extends StatelessWidget {
                             ),
                           );
                         },
-                        style: getButtonStyle(Colors.white),
+                        style: getButtonStyle(Colors.white, const Color(0xFF9D27B0)),
                         child: Text(
                           'Login',
                           style: GoogleFonts.roboto(
